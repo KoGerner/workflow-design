@@ -60,6 +60,8 @@ stages:
       "the approved method is fixed — say yes to continue"); the full scope note,
       method parameters and interview guide live in the saved document, never in
       the chat.
+      Say "Seven impact categories — I'll name them when we
+      score"; name them when we score. Do not count things you will not list.
       Every document of THIS BIA lives in its own folder output/<bia>/, where <bia> is the
       process name as a lowercase-hyphen slug (output/slaughter/, output/cutting-deboning/,
       output/human-resources/): name the folder once in this stage's card and pass it as
@@ -372,9 +374,12 @@ stages:
       value as reference and flag a requirement stricter than the actual as a capability gap
       for solution design — flag, never resolve or pick an option here. Skeleton staff or
       seats above the department headcount are flagged too. End with one "Approve / Amend"
-      gate and stop. Do not show raw JSON or Markdown pipe tables, and do not show the next
-      activity until this one is approved. Render each card's values directly from the
-      provisional record's fields — never re-type them; if a card is amended, amend the
+      gate and stop. Ask it as one line — the value, the flag, "ok?": "RTO < 4 h binding,
+      and the 8 h ERP target is a gap. ok?" — the gate question is one line, the reasons
+      are already on the card. Do not show raw JSON or Markdown pipe tables, and do not
+      show the next activity until this one is approved. Render each card's values
+      directly from the provisional record's fields — never re-type them; if a card
+      is amended, amend the
       record first and render the card from it. Propose scores by mapping transcript facts to the
       approved severity criteria; label them analyst-proposed until the owner approves them,
       and cite the evidence/criterion used. Evidence quotes must be exact contiguous transcript
