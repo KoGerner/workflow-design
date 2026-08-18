@@ -60,6 +60,13 @@ stages:
       "the approved method is fixed — say yes to continue"); the full scope note,
       method parameters and interview guide live in the saved document, never in
       the chat.
+      Every document of THIS BIA lives in its own folder output/<bia>/, where <bia> is the
+      process name as a lowercase-hyphen slug (output/slaughter/, output/cutting-deboning/,
+      output/human-resources/): name the folder once in this stage's card and pass it as
+      bia='<bia>' on every next_step call. A repeated BIA of the same process reuses its folder
+      (each overwrite still needs the human's approval); a BIA never writes into another BIA's
+      folder — output/ accumulates BIAs and is never wiped by a new run. Only the shared machine
+      record output/bia-record.json stays at the top of output/ (it merges across BIAs).
       Close your answer with a "Verify for yourself:" line of clickable links:
       [Core principles for AI use in BCM](https://agent.ai4bcm.org/demo/kb/core-principles-for-ai-use-in-bcm/) ·
       [BIA Preparation](https://agent.ai4bcm.org/demo/kb/workflows-bia-preparation/) ·
@@ -98,7 +105,7 @@ stages:
       confirmed method parameters, and an interview guide per critical process; chat
       carries only the ten-line summary.
     artifact_contracts:
-      - path: output/stage1-scope-and-guide.md
+      - path: output/<bia>/stage1-scope-and-guide.md
         name: scope note and interview guide
         markers: ["## Scope", "## Risk and environment", "## Method parameters", "## Interview guide"]
         min_bytes: 1200
@@ -141,7 +148,7 @@ stages:
       knowledge as facts — a suggestion I did not confirm stays a question in Unresolved
       points. List gaps explicitly.
       The stage document is the COMPLETE structured capture, saved to
-      output/stage2-interview-capture.md with every required section — never a
+      output/<bia>/stage2-interview-capture.md with every required section — never a
       summary. A request to keep the saved file short applies only to additional
       files, not to the stage document; a short extra summary may be saved under a
       different filename after the stage document exists.
@@ -166,7 +173,7 @@ stages:
       - Environment is approved for confidential BIA data.
     expected_output: Structured interview capture with explicit gaps.
     artifact_contracts:
-      - path: output/stage2-interview-capture.md
+      - path: output/<bia>/stage2-interview-capture.md
         name: interview capture
         markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Gaps"]
         min_bytes: 1200
@@ -227,7 +234,7 @@ stages:
       - SPOFs and risk items referred to the separate risk assessment, not scored in the BIA.
     expected_output: A dependency/inconsistency report for owner resolution.
     artifact_contracts:
-      - path: output/stage3-dependency-analysis.md
+      - path: output/<bia>/stage3-dependency-analysis.md
         name: dependency analysis
         markers: ["## Shared dependencies", "## Single points of failure", "## Conflicting recovery targets", "## Referrals"]
         min_bytes: 1200
@@ -369,8 +376,8 @@ stages:
       If an owner amends a card, update the provisional record and re-run the referee before
       showing that card again. After every activity is approved, save output/bia-record.json and
       the BIA only after their write approval — canonical paths, exactly: the machine record to
-      output/bia-record.json, the BIA draft to output/bia-draft.md, the sign-off record to
-      output/bia-signoff.json (never invent other filenames). Save the machine record by
+      output/bia-record.json, the BIA draft to output/<bia>/bia-draft.md, the sign-off record to
+      output/<bia>/bia-signoff.json (never invent other filenames). Save the machine record by
       passing the save_token from its passing validate_bia_record call to write_company_file
       with content omitted — the server writes the referee-validated bytes itself; never
       re-type the record. An amended card means referee re-run, fresh save_token, fresh
@@ -393,7 +400,7 @@ stages:
       (company-profile, impact-criteria, dependency-register, prior-bia, supplier-sla,
       regulatory-obligations). Keep the review surface human-readable and the referee record
       machine-readable. Referee the provisional record before showing owner cards; save it only
-      after all cards are approved. Write the draft and sign-off record to output/ only after
+      after all cards are approved. Write the draft and sign-off record to output/<bia>/ only after
       their respective approval gates.
     do_not_paste: Keep drafting inside the approved environment used for capture.
     approval_gate: >
@@ -422,11 +429,11 @@ stages:
         name: machine BIA record
         markers: ['"activities"']
         min_bytes: 1500
-      - path: output/bia-draft.md
+      - path: output/<bia>/bia-draft.md
         name: BIA draft
         markers: ["```"]
         min_bytes: 1200
-      - path: output/bia-signoff.json
+      - path: output/<bia>/bia-signoff.json
         name: sign-off record
         markers: ['"name"', '"role"', '"date"']
         min_bytes: 200
@@ -469,7 +476,7 @@ stages:
     connector_guidance: >
       Approved corporate environment only — this builds on live BIA data. Read the
       dependency-register file from the company data source; write the
-      solution-design handoff to output/pp4-handoff.md (canonical path) after the gate.
+      solution-design handoff to output/<bia>/pp4-handoff.md (canonical path) after the gate.
     do_not_paste: >
       Do not paste supplier contract terms or cost figures into a public AI tool. Keep
       solution-design work in the approved environment used for the BIA.
@@ -483,7 +490,7 @@ stages:
       - No capability gap computed, no option chosen or recommended; risk acceptance stays with the sponsor.
     expected_output: A requirements / RA-referrals / missing-evidence handoff for the PP4 sponsor discussion.
     artifact_contracts:
-      - path: output/pp4-handoff.md
+      - path: output/<bia>/pp4-handoff.md
         name: PP4 requirements handoff
         markers: ["## Continuity requirements", "## Risk-assessment referrals", "## Missing evidence"]
         min_bytes: 1200
