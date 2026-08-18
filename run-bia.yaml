@@ -1,0 +1,499 @@
+id: run-bia
+persona: bia-facilitator
+title: Run a BIA end-to-end
+when_to_use: >
+  Use when you need to run a Business Impact Analysis with AI help — from scoping
+  and risk-check, through interview design and transcript analysis, to a reviewed
+  draft report. AI prepares each step; you decide, approve, and own the result.
+  Also the right journey when someone asks for a BIA questionnaire, the interview
+  questions, or which process to assess first — those are Stage 1's outputs.
+stages:
+  - id: scope-and-risk
+    name: "Stage 1 · Identification of scope"
+    goal: Identify the department or process in scope and its key activities, run the AI-risk check, confirm the preconditions (the fixed method), and prepare the interview guide — before any data.
+    copy_paste_prompt: |
+      Act as a BCM analyst helping me scope a Business Impact Analysis.
+      Business areas in scope: [LIST]. BIA methodology: RTO, RPO, MTPD.
+      Start with identification: the department (or process) in scope, the head of the department,
+      the person coordinating business continuity for it, headcount, the buildings or sites
+      it works from, and who it reports to. Then list its key activities,
+      processes and deliverables (typically five or six — often its sub-teams); suggest any a
+      department like this usually has and the interviewee did not name, and let them confirm
+      or strike each one. These activities are the units the BIA rates.
+      If no department is chosen yet, or the user asks which process is most critical or
+      where to start, rank the activities the register and prior BIA already record
+      (priority tier, MTPD, recorded RTO) and offer the top ones as numbered options —
+      never invent criticality. 'Questionnaire' and 'interview questions' mean this stage's
+      interview guide: show it on request (it is saved with the scope note, printable) and,
+      on request, draft the pre-interview request — the documents and facts the interviewees
+      should bring — as email text in output/ for copy-paste. If asked which standard this
+      follows: the BCI Good Practice Guidelines (PP3 Analysis) as read through the BCI AI
+      Addendum — point to the Verify links.
+      List the inputs I need, the people to interview, and the data-sensitivity
+      decisions I must make before we start. Do not invent organisation facts.
+      Preconditions — program parameters, fixed before any data is collected, not
+      interview work: the impact categories (typically financial, reputational,
+      legal/regulatory, compliance/operational; a company may add life and health,
+      environment), the time horizons,
+      the damage scenarios, a 1-5 severity scale, the intolerability threshold, and
+      the RPO vocabulary. If we have no management-approved impact criteria yet,
+      offer the published default matrix as a starting point (its financial bands
+      are illustrative — recalibrate per organisation) and record that it still
+      needs management approval.
+      Then prepare the interview guide: first check for prior-cycle material (last
+      year's BIA, questionnaire history); if any exists, reconcile against it and
+      state what changed — greenfield only when that search comes back empty. For
+      each activity in scope, draft interview questions in this order: (1) impact over
+      time if the activity stops — whatever the cause — per category and horizon (what
+      breaks at 2h / 8h / 24h), and the critical time periods (season, month-end);
+      (2) the maximum tolerable period of disruption that follows from those impacts;
+      (3) resource requirements in four classes — people (number, skills, mandates),
+      buildings/seats (can they work from home?), IT/applications (RTO and RPO per
+      application, workaround), suppliers/vendors — as minimum capacity over time
+      (MBCO); (4) up- and downstream dependencies on other departments: what is
+      exchanged, in which direction, by when; (5) single points of failure to refer
+      to the risk assessment. Interview-first, no fixed question count, in language a
+      non-BCM interviewee understands. The BIA sets the required RTO; comparing it to
+      current capability is PP4 solution design, not this stage. Flag any
+      assumption you make.
+      In chat, present at most a ten-line summary (scope bullets, the risk level,
+      "the approved method is fixed — say yes to continue"); the full scope note,
+      method parameters and interview guide live in the saved document, never in
+      the chat.
+      Close your answer with a "Verify for yourself:" line of clickable links:
+      [Core principles for AI use in BCM](https://addendum.aibcm.org/demo/kb/core-principles-for-ai-use-in-bcm/) ·
+      [BIA Preparation](https://addendum.aibcm.org/demo/kb/workflows-bia-preparation/) ·
+      [BIA method parameters](https://addendum.aibcm.org/demo/kb/workflows-bia-method-parameters/) ·
+      [interview-guide prompt pattern](https://addendum.aibcm.org/demo/kb/prompts-bia-preparation-interview-guide/).
+    tools_to_use:
+      - identify_ai_risks
+      - get_prompt_template
+    questionnaire:
+      - Which business areas are in scope?
+      - Who heads the department, who coordinates BC for it, how many people, from which sites?
+      - What are its key activities / deliverables (typically five or six)?
+      - Who are the interview participants (names or roles)?
+      - What impact criteria has management already approved?
+      - What prior BIA or questionnaire material exists from earlier cycles? (Search for it before assuming greenfield.)
+    connector_guidance: >
+      Retrieve this stage's documents by role from the company data source configured
+      in your host (e.g. a SharePoint company folder): company-profile, impact-criteria,
+      prior-bia. If a document is missing there, ask the user for it — never invent
+      company facts.
+    do_not_paste: >
+      No real BIA data, financials, staffing, vulnerabilities or supplier names yet.
+      Scoping uses generic descriptions only.
+    approval_gate: >
+      Acknowledge to continue — not a formal gate: you confirm the one-process scope,
+      the AI risk level and approved tool environment, and that the fixed approved
+      method applies; adjust the interview guide only if it does not fit the scope.
+    reviewer_checklist:
+      - Scope matches what management asked for.
+      - The right environment is chosen for the data sensitivity ahead.
+      - Questions cover MTPD, required RTO, RPO and MBCO — not just "how fast back up".
+      - Prior-cycle material was searched for and reconciled (or its absence recorded).
+      - Language suits a non-BCM interviewee.
+    expected_output: >
+      One saved document holding the scope note, the risk/environment decision, the
+      confirmed method parameters, and an interview guide per critical process; chat
+      carries only the ten-line summary.
+    artifact_contracts:
+      - path: output/stage1-scope-and-guide.md
+        name: scope note and interview guide
+        markers: ["## Scope", "## Risk and environment", "## Method parameters", "## Interview guide"]
+        min_bytes: 1200
+    next_moves:
+      - {when: "no department chosen yet, or the user asks which process is most critical", offer: "Rank the recorded activities by criticality (priority tier, MTPD) — pick one to start"}
+      - {when: "scope or participants not yet confirmed", offer: "Confirm the department/process and participants — I draft the scope note and interview guide"}
+      - {when: "the user asks for the questionnaire or the interview questions", offer: "Show the interview guide now — it is saved with the scope note; I can also draft the pre-interview request email"}
+      - {when: "the scope document is saved", offer: "Approve the scope document → I open Stage 2 · Structured interview"}
+      - {when: "prior-cycle BIA material was found", offer: "Show what changed against last cycle's BIA"}
+      - {when: "no management-approved impact criteria exist", offer: "Use the default matrix for now and record that management approval is pending"}
+    cites:
+      - pp3-typical_uses
+      - pp3-minimum_controls
+      - workflows-bia-method-parameters
+      - prompts-bia-preparation-interview-guide
+      - pp3-process
+    next: capture-transcript
+  - id: capture-transcript
+    name: "Stage 2 · Structured interview (conversational)"
+    goal: Conduct or take in the structured interview — the AI asks, challenges, suggests and explains, conversationally, with consent, in the approved environment — and write the complete structured capture.
+    copy_paste_prompt: |
+      Two ways in: either interview me here, one activity at a time, or take the transcript I
+      provide (file in the company folder, or pasted). Either way, conduct it as a structured
+      interview: ask what the impact is if the activity stops — whatever the cause; explain
+      that we rate urgency, not importance (a vital yearly process can tolerate two weeks);
+      challenge estimates ("are you sure it is that bad — or overestimating?"); suggest
+      activities, documents, systems or requirements a department like this usually needs
+      and I did not mention, and let me confirm or strike them; explain any term you use
+      (upstream/downstream, RTO, RPO, MTPD) in one line; for every resource ask the minimum
+      needed over time and the workaround (which other role or site could do it, how many —
+      a pool no larger than the need is not a workaround: record it as a gap). When
+      interviewing here: one question per turn — never a block of questions — and confirm what
+      you heard in one line before the next; save the verbatim Q&A to
+      output/owner-interviews/<department>-interview-transcript.md before writing the capture —
+      Stage 4 quotes only from transcript files (07_Interviews/ or output/owner-interviews/),
+      never from the capture. Then structure
+      the result as a BIA capture: impacts over time, resource requirements (people,
+      buildings/seats, IT/applications, suppliers), dependencies on other departments,
+      assumptions, unresolved points. Use ONLY what I said. Do not add facts from general
+      knowledge as facts — a suggestion I did not confirm stays a question in Unresolved
+      points. List gaps explicitly.
+      The stage document is the COMPLETE structured capture, saved to
+      output/stage2-interview-capture.md with every required section — never a
+      summary. A request to keep the saved file short applies only to additional
+      files, not to the stage document; a short extra summary may be saved under a
+      different filename after the stage document exists.
+      Close your answer with a "Verify for yourself:" line of clickable links:
+      [PP3 minimum controls](https://addendum.aibcm.org/demo/kb/pp3-minimum_controls/) ·
+      [Do not use confidential BCM data in public AI tools](https://addendum.aibcm.org/demo/kb/do-not-use-do-not-use-confidential-bcm-data-in-public-ai-tools/).
+    tools_to_use:
+      - search
+    connector_guidance: >
+      Use an approved corporate transcription/AI tool. Real interview content is
+      confidential — it must stay inside your organisation's approved environment.
+      Demo/synthetic interviews may be read from the company data source's
+      transcripts/ area instead of being pasted.
+    do_not_paste: >
+      Do not paste interview transcripts or notes into a public AI tool. Confirm
+      participant consent to AI-assisted capture first.
+    approval_gate: >
+      Acknowledge to continue — not a formal gate: consent is recorded and capture
+      stays in the approved environment.
+    reviewer_checklist:
+      - Consent obtained and recorded.
+      - Environment is approved for confidential BIA data.
+    expected_output: Structured interview capture with explicit gaps.
+    artifact_contracts:
+      - path: output/stage2-interview-capture.md
+        name: interview capture
+        markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Gaps"]
+        min_bytes: 1200
+    next_moves:
+      - {when: "no interview yet", offer: "Interview me here, one activity at a time — or read the transcript at <path in the company folder>"}
+      - {when: "the interview is done, capture not yet saved", offer: "Save the transcript (if held here) and the structured capture, then approve → Stage 3"}
+      - {when: "unresolved points remain", offer: "List the open points I should take back to the owner"}
+    cites:
+      - pp3-minimum_controls
+      - pp3-methods
+    next: analyse-transcript
+  - id: analyse-transcript
+    name: "Stage 3 · Convert the interview to the standardised template"
+    goal: Convert the interview into the standardised template — impact over time, resource requirements, dependencies — and analyse recovery targets across departments (approved env only).
+    copy_paste_prompt: |
+      Fill the standardised template from the capture: the spoken word becomes a table with
+      numbers. Read the template first with read_company_file from 02_BCM-Method/bia-template.json
+      (department block; per activity impact over time, MTPD, priority tier, resource requirements
+      in four classes with workaround and IT actuals, dependencies on other departments; the
+      department roll-up is computed at stage 5) — the company's copy wins over any memory of it;
+      if the file is absent, say so and use that field list. Then compare the BIA captures I provide across departments. Identify shared
+      dependencies, single points of failure, and conflicting recovery targets
+      (e.g. a 4h RTO that depends on a system another team recovers in 24h).
+      For each dependency, classify its direction as upstream, downstream or
+      parallel. Name every register-backed dependency by its exact register asset id
+      from the dependency register (e.g. LF-ABP-01), never a prose paraphrase — these
+      ids feed each activity's dependencies list in the draft-stage machine record. A
+      dependency with no register entry is recorded as a finding, not given an
+      invented id. Apply two method rules: (1) the MTPD is the earliest time horizon
+      at which worst-case impact reaches the intolerability threshold, and (2) the
+      minimum principle — a provider's MTPD/RTO must not exceed the requirement of
+      any consumer that depends on it; flag every provider whose target is looser
+      than a consumer needs.
+      Flag inconsistencies for human resolution — do NOT resolve them yourself.
+      Refer single points of failure and risk items to the separate risk assessment
+      — do NOT score or treat them in the BIA.
+      Close your answer with a "Verify for yourself:" line of clickable links:
+      [BIA Output Review — Consistency Check](https://addendum.aibcm.org/demo/kb/prompts-bia-output-review-consistency-check/) ·
+      [PP3 process](https://addendum.aibcm.org/demo/kb/pp3-process/).
+      STALL RULE: if any of this process's dependencies (the register assets this process
+      depends on or consumes from) is flagged OWNER MISSING, the next stage is the owner
+      side-quest — do not analyse around an unowned critical dependency. If every one of this
+      process's dependencies has an owner, mark the next stage N/A and advance straight through
+      it; an unowned asset elsewhere in the register is recorded as a register-level referral
+      in the findings, not this BIA's stall.
+    tools_to_use:
+      - search
+      - identify_ai_risks
+    connector_guidance: >
+      Approved corporate environment only — this is live BIA data. Retrieve this
+      stage's documents by role from the company data source: impact-criteria,
+      prior-bia, dependency-register, supplier-sla, transcripts/.
+    do_not_paste: Public tools are not suitable for live BIA data.
+    approval_gate: You decide how each flagged inconsistency is resolved.
+    reviewer_checklist:
+      - Conflicting RTOs escalated to the right owners.
+      - AI-surfaced dependencies confirmed, not assumed.
+      - SPOFs and risk items referred to the separate risk assessment, not scored in the BIA.
+    expected_output: A dependency/inconsistency report for owner resolution.
+    artifact_contracts:
+      - path: output/stage3-dependency-analysis.md
+        name: dependency analysis
+        markers: ["## Shared dependencies", "## Single points of failure", "## Conflicting recovery targets", "## Referrals"]
+        min_bytes: 1200
+    next_moves:
+      - {when: "no dependency is flagged OWNER MISSING", offer: "Approve the analysis → Stage 4 · List the requirements"}
+      - {when: "a dependency is flagged OWNER MISSING", offer: "Go to Stage 3a — interview the candidate owner of <asset id>"}
+      - {when: "conflicting recovery targets were flagged", offer: "Show each conflicting target with who owns it"}
+    cites:
+      - pp3-methods
+      - pp3-process
+      - prompts-bia-output-review-consistency-check
+    next: asset-owner-capture
+  - id: asset-owner-capture
+    name: "Stage 3a · Missing-owner loop (only when a dependency has no owner)"
+    goal: Close a register stall — capture the missing ASSET OWNER (capacity, backup, runtime, on-call) and write it back, human-approved.
+    copy_paste_prompt: |
+      A dependency in the register has no owner (the OWNER MISSING flag). This is the reality
+      loop: the BIA does not stop, and it does not get papered over — the BCM manager interviews
+      the candidate owner about what the resource can actually do (capacity, backup arrangements,
+      mobilisation runtime, on-call cover), and the validated answers update the shared register.
+      1. Interview the candidate owner; save the transcript to the company data source
+         (output/owner-interviews/<asset-id>.md).
+      2. Structure the capture as a PROPOSAL ONLY — the register is NOT touched: write
+         output/proposals/<asset-id>-owner-capture.md from the transcript (owner named;
+         capacity, backup arrangements, mobilisation runtime, on-call cover; every quote
+         verbatim; untested or uncontracted capability stated as such; gaps and
+         follow-ups listed).
+      3. Review the proposal: owner named? capability honest? gaps + follow-ups
+         recorded? Every quote verbatim?
+      4. ONLY after named sign-off, update the dependency-register file via
+         update_register_entry — pass the asset_id plus ONLY the approved field changes;
+         never rewrite the register file from chat output. This is the one gated
+         register write. If the entry's existing notes text contradicts the approved
+         owner facts (e.g. a seeded "no named owner" narrative), include a corrected
+         notes value in the same approved patch — a stale note must not survive.
+      5. Loop back and continue the department: call next_step('run-bia', 'capture-transcript')
+         to re-enter the analysis — the OWNER MISSING flag should now be gone. If no stall was
+         flagged in your run, mark this stage N/A and simply continue forward.
+      Register lifecycle: for demo or rehearsal runs, work on a copy of the
+      dependency-register file — the seeded missing-owner stall IS the demo; the
+      data source's version history makes every register write reversible.
+    tools_to_use:
+      - search
+      - update_register_entry
+    connector_guidance: >
+      Approved corporate environment only — owner interviews are live BIA data.
+      Read the dependency-register file from the company data source; write the
+      owner-interview transcript and the capture proposal to its output/ area; the
+      register update itself happens only after the approval gate below.
+    do_not_paste: Public tools are not suitable for live BIA data or supplier contract detail.
+    approval_gate: You approve the register update BEFORE --write-register runs — the AI proposes a capture; the owner's facts and the write decision are yours.
+    reviewer_checklist:
+      - The named owner accepted ownership in the interview, verbatim.
+      - Untested or uncontracted capability is recorded as a gap, not as capability.
+      - The register write happened only after sign-off.
+    expected_output: A validated owner capture (proposal file), the human-approved register update, and a re-run analysis with the stall cleared.
+    # Write-time contracts only — no advance gate for this stage: the N/A branch is
+    # register-dependent and not server-derivable (patterns carry a '*').
+    artifact_contracts:
+      - path: output/owner-interviews/*.md
+        name: owner interview transcript
+        markers: []
+        min_bytes: 800
+      - path: output/proposals/*-owner-capture.md
+        name: owner-capture proposal
+        markers: ["## Owner", "## Capability", "## Gaps"]
+        min_bytes: 800
+    next_moves:
+      - {when: "no owner interview yet", offer: "Give me the owner interview (file or paste) — I write the proposal"}
+      - {when: "the proposal is reviewed", offer: "Sign off by name → I patch the register entry and re-enter the analysis"}
+      - {when: "every dependency has an owner", offer: "Skip — mark Stage 3a N/A and continue"}
+    cites:
+      - pp3-methods
+      - pp3-process
+    next: draft-and-review
+  - id: draft-and-review
+    name: "Stage 4 · List the requirements (RTO, MTPD, RPO — the numbers)"
+    goal: Draft the BIA report, consistency-check it, route for human sign-off.
+    copy_paste_prompt: |
+      First build the provisional machine record in memory as a plain JSON object with an
+      activities list; every activity must include its required recovery_target, a dept
+      naming the department that performs it (the SAME dept value the dependency register
+      uses on its consumers entries, e.g. schlachtung — it is the only field that ties the
+      activity back to the register), and a
+      dependencies list of exact register asset ids from the Stage-3 analysis — required,
+      never omitted and never empty, and never an invented id. If Stage 3 surfaced a
+      dependency the register does not model, raise it as a finding and list the register
+      ids that ARE modelled; do not drop the field. The referee rejects an activity with
+      no dependencies: an unlinked activity reaches the dependency graph as a card with no
+      edges, which is what happened to marschkamp's Slaughter Process on 2026-07-30. If none
+      of the systems the interview named is modelled, offer the register entries the
+      department plausibly consumes (site power, water, shared IT) as numbered options for the
+      user to confirm, and record the unmodelled applications as findings for the register
+      owner — a department with no confirmed register link is a finding, never a stop.
+      Run the referee
+      and run validate_bia_record to PASS (maximum three rounds), passing the whole record as one
+      JSON object or string. Do not save or expose the JSON.
+      Fix schema, linkage, exact-quote, and encoding rejections yourself; they are mechanical and
+      need no human approval — the rejection text names the fix (the allowed evidence types, the
+      method's scenario ids, a bare duration, the known register ids): apply it and re-run
+      without asking. Keep a failed provisional record in memory: never propose or write
+      a blocker, audit, or error file. Never offer to bypass the referee. If three rounds still
+      fail, show the exact remaining rejections as a technical blocker, not an Approve / Amend
+      gate. The first human decision is Approve / Amend on the first PASSed activity card, presented
+      in chat — cards are reviewed in chat only, and no file is written until every card is
+      approved. Only after PASS review one
+      prioritised activity at a time, preserving the order in the approved capture. For the current
+      activity show:
+      owner and priority; RTO, RPO (per data set), grid-derived MTPD and MBCO (minimum
+      capacity or service over time); a compact fixed-width
+      impact grid in a fenced code block; the exact supporting quotes and source files;
+      dependencies, minimum resources, and open decisions. State the workaround per resource
+      where the interview gave one, and flag a workaround pool that is not larger than the
+      need as a gap. A recovery target equal to or later than the MTPD, or an impact rating
+      that falls over time, is flagged — never silently accepted. If the company keeps an IT
+      register with the actual RTO/RPO per application, show IT's actual next to the required
+      value as reference and flag a requirement stricter than the actual as a capability gap
+      for solution design — flag, never resolve or pick an option here. Skeleton staff or
+      seats above the department headcount are flagged too. End with one "Approve / Amend"
+      gate and stop. Do not show raw JSON or Markdown pipe tables, and do not show the next
+      activity until this one is approved. Render each card's values directly from the
+      provisional record's fields — never re-type them; if a card is amended, amend the
+      record first and render the card from it. Propose scores by mapping transcript facts to the
+      approved severity criteria; label them analyst-proposed until the owner approves them,
+      and cite the evidence/criterion used. Evidence quotes must be exact contiguous transcript
+      text using evidence fields `quote` and `source_path` — never put the path in `quote` or
+      legacy `ref`; no ellipses, brackets, or stitched fragments. Take every quote by re-reading
+      the transcript files directly — 07_Interviews/, or output/owner-interviews/ for an
+      interview held in chat — the stage-2 capture is derived material and never the quote
+      source. A score is an
+      analysis, not an owner quote; do not alter criteria-based scores merely to match an owner's
+      stated MTPD. Use MISSING only where neither the evidence nor the criteria support a score;
+      never invent an underlying fact. If RTO is not strictly inside the derived MTPD, show an
+      explicit Recovery Gap. Model a provider dependency without its own impact grid as a
+      recovery question linked to the affected consumer impact. Re-read the current dependency
+      register after Stage 5; its owner and capability fields override older capture or analysis
+      notes, while gaps that remain open stay open.
+
+      If an owner amends a card, update the provisional record and re-run the referee before
+      showing that card again. After every activity is approved, save output/bia-record.json and
+      the BIA only after their write approval — canonical paths, exactly: the machine record to
+      output/bia-record.json, the BIA draft to output/bia-draft.md, the sign-off record to
+      output/bia-signoff.json (never invent other filenames). Save the machine record by
+      passing the save_token from its passing validate_bia_record call to write_company_file
+      with content omitted — the server writes the referee-validated bytes itself; never
+      re-type the record. An amended card means referee re-run, fresh save_token, fresh
+      save. Propose the record write with a
+      short readable summary (path; per activity owner, MTPD, RTOs, RPO, referee status) — never
+      raw JSON in chat — and the saved record must equal the approved cards exactly. Propose the
+      BIA and sign-off with full-text previews; in the saved BIA render every impact grid as a
+      fenced fixed-width block and every quote as a full contiguous span (no ellipses).
+      When recovery_gap_flagged is true the saved BIA renders a ## Recovery Gap section;
+      when no gap exists, omit that section. Also flag any recovery target unsupported by
+      impact evidence and any dependency without an owner. Use only the approved material.
+      Close your answer with a "Verify for yourself:" line of clickable links:
+      [PP3 outcomes](https://addendum.aibcm.org/demo/kb/pp3-outcomes/) · [PP3 minimum controls](https://addendum.aibcm.org/demo/kb/pp3-minimum_controls/).
+    tools_to_use:
+      - get_prompt_template
+      - search
+      - validate_bia_record
+    connector_guidance: >
+      Retrieve every read document by role from the company data source
+      (company-profile, impact-criteria, dependency-register, prior-bia, supplier-sla,
+      regulatory-obligations). Keep the review surface human-readable and the referee record
+      machine-readable. Referee the provisional record before showing owner cards; save it only
+      after all cards are approved. Write the draft and sign-off record to output/ only after
+      their respective approval gates.
+    do_not_paste: Keep drafting inside the approved environment used for capture.
+    approval_gate: >
+      First obtain Approve / Amend for each activity card. Then activity owners and management
+      review and approve the assembled BIA before it is relied upon. Record each approval as
+      name + role + date + document version. Owner
+      validation stays "pending" until the named activity owner has personally
+      confirmed — a proxy "approved" in chat is not owner sign-off. AI does not
+      sign off — accountability stays with you.
+    reviewer_checklist:
+      - Each recovery target traces to an impact.
+      - Every dependency has a named owner.
+      - Owners have validated and signed off.
+      - Impacts are rated per time window against the approved impact-criteria bands, or the missing criteria are logged as a formal gap.
+      - MBCO and RPO are stated per prioritised activity (or explicitly N/A with a reason).
+      - Each prioritised activity carries a priority/tier.
+      - Minimum resource requirements over time (people, skills, equipment) are stated per prioritised activity.
+      - RTO ≤ MTPD holds for every activity, or the exception is flagged for solution design.
+      - MTPD is derived from the rated impact grid (earliest horizon reaching the intolerability threshold), not asserted.
+      - RTO is strictly inside the MTPD (RTO < the MTPD horizon), or the recovery-capability gap is flagged for solution design.
+      - Impact ratings are complete for every configured horizon and non-decreasing over time; RPO is chosen from the named vocabulary, not free-text.
+      - The sign-off record names who approved, in what role, on which date, for which document version.
+    expected_output: A reviewed, owner-approved BIA report.
+    artifact_contracts:
+      - path: output/bia-record.json
+        name: machine BIA record
+        markers: ['"activities"']
+        min_bytes: 1500
+      - path: output/bia-draft.md
+        name: BIA draft
+        markers: ["```"]
+        min_bytes: 1200
+      - path: output/bia-signoff.json
+        name: sign-off record
+        markers: ['"name"', '"role"', '"date"']
+        min_bytes: 200
+    next_moves:
+      - {when: "a card is on screen", offer: "Approve this card — or Amend (say which field), or show the evidence quotes"}
+      - {when: "every card is approved", offer: "Save the record, the BIA draft and the sign-off — I show each preview first"}
+      - {when: "the referee still fails after three rounds", offer: "Here are the exact rejections; I fix the mechanical ones myself"}
+    cites:
+      - pp3-minimum_controls
+      - pp3-outcomes
+    next: solution-design
+  - id: solution-design
+    name: "Stage 5 · Consolidate requirements + sanity check → handover"
+    goal: Consolidate the requirements, sanity-check them, and hand them over — requirements for humans (GPG PP4 solution design), never a plan.
+    copy_paste_prompt: |
+      Act as a BCM analyst preparing the requirements handover from the approved BIA I provide.
+      Do NOT compute a capability gap, choose an option, accept risk, or draft a plan — that
+      is solution-design (GPG PP4) work for humans. Produce the requirements handover:
+      1 the approved continuity requirements per prioritised activity (required RTO,
+        RPO per data set, MBCO as minimum capacity over time, minimum resources over time);
+      2 the referrals to the separate risk assessment collected during analysis;
+      3 the evidence still missing;
+      4 a sanity check across everything in this run before handover: activities whose
+        recovery target equals or exceeds their MTPD; seat or staff requirements that exceed
+        the department's headcount or look implausible next to their peers; the same
+        application named two ways; a provider target looser than a consumer needs; a
+        workaround pool no larger than the need. Flag, do not resolve;
+      5 the department roll-up, computed from the activities, never typed: minimum staff per
+        horizon, recovery seats in total, the application list with the strictest RTO/RPO per
+        application, the counterparties (other departments, suppliers) — the view housing and
+        IT need, and the input the other departments' BIAs must see;
+      and enumerate every register pp4_issue item so none is dropped.
+      Label everything "requirements handover — for solution-design discussion (GPG PP4), not approved".
+      Close your answer with a "Verify for yourself:" line of clickable links:
+      [AI support for PP4: process](https://addendum.aibcm.org/demo/kb/pp4-process/) ·
+      [AI support for PP4: typical uses](https://addendum.aibcm.org/demo/kb/pp4-typical_uses/).
+    tools_to_use:
+      - search
+      - get_prompt_template
+    connector_guidance: >
+      Approved corporate environment only — this builds on live BIA data. Read the
+      dependency-register file from the company data source; write the
+      solution-design handoff to output/pp4-handoff.md (canonical path) after the gate.
+    do_not_paste: >
+      Do not paste supplier contract terms or cost figures into a public AI tool. Keep
+      solution-design work in the approved environment used for the BIA.
+    approval_gate: >
+      The sponsor accepts the requirements handoff to PP4 solution design. AI hands over
+      requirements, referrals and missing evidence; capability comparison, options and risk
+      acceptance are human PP4 decisions — no plan is drafted here.
+    reviewer_checklist:
+      - Requirements trace to the approved BIA record, not re-estimated.
+      - Risk-assessment referrals are listed; none is resolved or scored here.
+      - No capability gap computed, no option chosen or recommended; risk acceptance stays with the sponsor.
+    expected_output: A requirements / RA-referrals / missing-evidence handoff for the PP4 sponsor discussion.
+    artifact_contracts:
+      - path: output/pp4-handoff.md
+        name: PP4 requirements handoff
+        markers: ["## Continuity requirements", "## Risk-assessment referrals", "## Missing evidence"]
+        min_bytes: 1200
+    next_moves:
+      - {when: "the handover is drafted", offer: "Approve the handover — the BIA ends here"}
+      - {when: "the sanity check raised findings", offer: "Show the sanity-check findings first"}
+      - {when: "evidence is still missing", offer: "Add the missing-evidence list to the handover"}
+    cites:
+      - pp4-methods
+      - pp4-minimum_controls
+      - pp4-process
+      - pp4-typical_uses
+    next: null

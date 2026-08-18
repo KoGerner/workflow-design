@@ -1,0 +1,92 @@
+{
+  "_source": "Concept-level template, aligned 2026-08-16 to a practitioner's online BIA/BCP system (2012–2017, banking; shared in confidence — anonymised, no company or person names) as walked through in the 13.08.2026 call, and to GPG PP3 / ISO 22317. Stage 3 fills this from the stage-2 capture: the spoken word becomes a table with numbers. Impact categories and horizons are defaults — method.json per company overrides.",
+  "_rules": [
+    "Requirements are recorded PER ACTIVITY (ISO 22317, GPG PP3); the department roll-up (skeleton staff per horizon, recovery seats total, application list) is a stage-5 view for consolidation, not the record.",
+    "priority_tier is derived from the impact grid (earliest horizon at which any category reaches the intolerability threshold gives the tier; lowest tier = not time-critical) — never asserted.",
+    "skeleton_staff per horizon and seats_needed may not exceed the department headcount — flag, do not silently accept.",
+    "it_actual_rto / it_actual_rpo are OPTIONAL reference values from an IT register when the company has one; a requirement stricter than the actual is flagged as a capability gap for solution design (GPG PP4) — flagged, never resolved in the BIA.",
+    "Dependencies on other departments are the counterpart's obligation: each entry should surface in that department's BIA (what is exchanged, by when, the alternative if it fails).",
+    "The 'suitable for' recovery options are the interviewee's view of what could work (work from home, transfer to another team/site, alternative site seat, staff relocation, manual workaround) — input to strategy, not a decision."
+  ],
+  "department": {
+    "id": "",
+    "interview_date": "",
+    "last_updated": "",
+    "location_sites": [],
+    "building": "",
+    "division": "",
+    "sub_unit": "",
+    "legal_entity": "",
+    "name": "",
+    "head": "",
+    "bc_coordinator": "",
+    "reports_to": "",
+    "contact": "",
+    "headcount": 0,
+    "description": "",
+    "skeleton_staff": 0,
+    "validation": [
+      {"role": "head of department | division lead | country lead", "name": "", "date": "", "document_version": ""}
+    ]
+  },
+  "activities": [
+    {
+      "name": "",
+      "related_process": "",
+      "product_service": "",
+      "owner": "",
+      "contact": "",
+      "critical_time_periods": "",
+      "description": "",
+      "impact_over_time": {
+        "categories": ["financial", "legal", "regulatory", "reputational"],
+        "horizons": ["immediate", "today", "tomorrow", "this_week", "this_month", "after"],
+        "scale": ["none", "low", "medium", "high"],
+        "ratings": {}
+      },
+      "mtpd": "",
+      "priority_tier": "",
+      "recovery_options_suitable": {
+        "work_from_home": null,
+        "work_transference": null,
+        "alternative_site_seat": null,
+        "staff_relocation": null,
+        "manual_workaround": null
+      },
+      "skeleton_staff": 0,
+      "resource_requirements": {
+        "people": [
+          {"role": "", "minimum_over_time": {}, "skills_mandates": "", "workaround_pool": ""}
+        ],
+        "buildings_seats": {
+          "seats_needed": 0,
+          "recovery_seats_needed": 0,
+          "work_from_home_possible": null,
+          "transfer_to_other_site": null
+        },
+        "it_applications": [
+          {"name_normalised": "", "as_named_in_interview": "", "instance": "", "rto": "", "rpo": "",
+           "workaround": "", "it_actual_rto": "", "it_actual_rpo": ""}
+        ],
+        "suppliers": [
+          {"name": "", "what": "", "rto": "", "alternative": ""}
+        ],
+        "other_requirements": "documents, terminals, seals/stamps, shared drives, equipment"
+      },
+      "dependencies_other_departments": [
+        {"department": "", "contact": "", "direction": "upstream|downstream", "what": "", "rto": "", "alternative": ""}
+      ],
+      "evidence": [
+        {"quote": "", "source_path": ""}
+      ]
+    }
+  ],
+  "department_rollup": {
+    "_note": "stage-5 view, computed from the activities: never edited by hand",
+    "skeleton_staff_over_time": {},
+    "recovery_seats_total": 0,
+    "applications": [],
+    "counterparties": []
+  },
+  "consolidation_notes": []
+}
