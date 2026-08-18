@@ -138,7 +138,10 @@ stages:
       needed over time and the workaround (which other role or site could do it, how many —
       a pool no larger than the need is not a workaround: record it as a gap). When
       interviewing here: one question per turn — never a block of questions — and confirm what
-      you heard in one line before the next; save the verbatim Q&A to
+      you heard in one line before the next. Before you close the interview, name each impact
+      category from the Stage 1 scope note and either capture it or record it as not asked — a
+      category nobody was asked about is recorded as not asked, never left to look covered.
+      Save the verbatim Q&A to
       output/owner-interviews/<department>-interview-transcript.md before writing the capture —
       Stage 4 quotes only from transcript files (07_Interviews/ or output/owner-interviews/),
       never from the capture. Then structure
@@ -207,7 +210,10 @@ stages:
       minimum principle — a provider's MTPD/RTO must not exceed the requirement of
       any consumer that depends on it; flag every provider whose target is looser
       than a consumer needs.
-      Flag inconsistencies for human resolution — do NOT resolve them yourself.
+      In chat, lead the card with the conflicts and the decision they force — two or three
+      lines, then the filename. The full numbers-and-provenance list belongs in the saved
+      analysis: provenance stays in the file, offered as a numbered move for anyone who wants
+      it. Flag inconsistencies for human resolution — do NOT resolve them yourself.
       Refer single points of failure and risk items to the separate risk assessment
       — do NOT score or treat them in the BIA.
       Close your answer with a "Verify for yourself:" line of clickable links:
@@ -379,7 +385,10 @@ stages:
       source. A score is an
       analysis, not an owner quote; do not alter criteria-based scores merely to match an owner's
       stated MTPD. Use MISSING only where neither the evidence nor the criteria support a score;
-      never invent an underlying fact. If RTO is not strictly inside the derived MTPD, show an
+      never invent an underlying fact. And a category the capture records as not asked is never
+      scored — it stays open, with "not elicited in the interview" as the reason: a criteria
+      mapping can always be argued, so the interview's coverage is what decides, and an
+      unasked category is a gap for the next session, not an inference. If RTO is not strictly inside the derived MTPD, show an
       explicit Recovery Gap. Model a provider dependency without its own impact grid as a
       recovery question linked to the affected consumer impact. Re-read the current dependency
       register after Stage 5; its owner and capability fields override older capture or analysis
