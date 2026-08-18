@@ -373,6 +373,11 @@ stages:
       register after Stage 5; its owner and capability fields override older capture or analysis
       notes, while gaps that remain open stay open.
 
+      Before you name this activity, read output/bia-record.json and reuse the exact activity name
+      already saved for this department — the record keys activities by name, so a renamed re-run
+      adds a second card for one process instead of replacing it, and there is no removal path
+      (update_bia_activity corrects owner/role/contact only; the name is analysis). One process, one
+      card: never a second card for the same process. A genuinely new activity gets a new name.
       If an owner amends a card, update the provisional record and re-run the referee before
       showing that card again. After every activity is approved, save output/bia-record.json and
       the BIA only after their write approval — canonical paths, exactly: the machine record to
