@@ -60,8 +60,9 @@ stages:
       "the approved method is fixed — say yes to continue"); the full scope note,
       method parameters and interview guide live in the saved document, never in
       the chat.
-      Say "Seven impact categories — I'll name them when we
-      score"; name them when we score. Do not count things you will not list.
+      Say how many impact categories the approved method has ("Seven impact categories —
+      I'll name them when we score" on the default matrix); name them when we score. Do
+      not count things you will not list.
       Every document of THIS BIA lives in its own folder output/<bia>/, where <bia> is the
       process name as a lowercase-hyphen slug (output/slaughter/, output/cutting-deboning/,
       output/human-resources/): name the folder once in this stage's card and pass it as
@@ -384,9 +385,9 @@ stages:
       approved severity criteria; label them analyst-proposed until the owner approves them,
       and cite the evidence/criterion used. Evidence quotes must be exact contiguous transcript
       text using evidence fields `quote` and `source_path` — never put the path in `quote` or
-      legacy `ref`; no ellipses, brackets, or stitched fragments, and `lens` — the impact
-      category the quote supports; a lens scored 2 or higher with no lens-tagged quote is
-      rejected, so tag before you score. Take every quote by re-reading
+      legacy `ref`; no ellipses, brackets, or stitched fragments. Each evidence item also
+      carries `lens` — the impact category the quote supports; a lens scored 2 or higher with
+      no lens-tagged quote is rejected, so tag before you score. Take every quote by re-reading
       the transcript files directly — 07_Interviews/, or output/owner-interviews/ for an
       interview held in chat — the stage-2 capture is derived material and never the quote
       source. A score is an
