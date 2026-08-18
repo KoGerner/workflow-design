@@ -261,15 +261,24 @@ stages:
          output/proposals/<asset-id>-owner-capture.md from the transcript (owner named;
          capacity, backup arrangements, mobilisation runtime, on-call cover; every quote
          verbatim; untested or uncontracted capability stated as such; gaps and
-         follow-ups listed).
+         follow-ups listed). One proposal per asset, shared by every BIA that meets the
+         stall: if the file already exists (an earlier run, a stale capture), re-read it,
+         say in one line what the new interview changes, and overwrite it in place on
+         approval — SharePoint version history keeps the earlier one; never a copy under
+         another name, never a halt: unclear provenance is a finding for the report, not
+         a stop.
       3. Review the proposal: owner named? capability honest? gaps + follow-ups
          recorded? Every quote verbatim?
-      4. ONLY after named sign-off, update the dependency-register file via
-         update_register_entry — pass the asset_id plus ONLY the approved field changes;
-         never rewrite the register file from chat output. This is the one gated
-         register write. If the entry's existing notes text contradicts the approved
-         owner facts (e.g. a seeded "no named owner" narrative), include a corrected
-         notes value in the same approved patch — a stale note must not survive.
+      4. One field, one gate. Show ONE card: the proposal's sections, the exact register
+         diff (field: old → new, the asset id with its plain name) and the Approval record
+         the file will carry (approver name + role; date and reference filled from the
+         reply). Ask for named sign-off once. On that one reply save the proposal (with
+         the approval record) and patch the register via update_register_entry — pass the
+         asset_id plus ONLY the approved field changes; never rewrite the register file
+         from chat output. Do not ask again for the approval record or the patch. If the
+         entry's existing notes text contradicts the approved owner facts (e.g. a seeded
+         "no named owner" narrative), include a corrected notes value in the same approved
+         patch — a stale note must not survive.
       5. Loop back and continue the department: call next_step('run-bia', 'capture-transcript')
          to re-enter the analysis — the OWNER MISSING flag should now be gone. If no stall was
          flagged in your run, mark this stage N/A and simply continue forward.
@@ -304,7 +313,8 @@ stages:
         min_bytes: 800
     next_moves:
       - {when: "no owner interview yet", offer: "Give me the owner interview (file or paste) — I write the proposal"}
-      - {when: "the proposal is reviewed", offer: "Sign off by name → I patch the register entry and re-enter the analysis"}
+      - {when: "a proposal for this asset already exists", offer: "Overwrite it in place with the corrected proposal — version history keeps the earlier one"}
+      - {when: "the proposal is reviewed", offer: "Sign off by name once → I save the proposal with your approval record and patch the register — no second gate"}
       - {when: "every dependency has an owner", offer: "Skip — mark Stage 3a N/A and continue"}
     cites:
       - pp3-methods
@@ -343,7 +353,9 @@ stages:
       approved. Only after PASS review one
       prioritised activity at a time, preserving the order in the approved capture. For the current
       activity show:
-      owner and priority; RTO, RPO (per data set), grid-derived MTPD and MBCO (minimum
+      owner and priority; RTO, RPO (per data set), the MTPD the impact grid gives — say it
+      so the department head can read it: "MTPD 8 h — the legal/regulatory impact reaches
+      the threshold at 8 h", never a method label — and MBCO (minimum
       capacity or service over time); a compact fixed-width
       impact grid in a fenced code block; the exact supporting quotes and source files;
       dependencies, minimum resources, and open decisions. State the workaround per resource
@@ -389,7 +401,10 @@ stages:
       save. Propose the record write with a
       short readable summary (path; per activity owner, MTPD, RTOs, RPO, referee status) — never
       raw JSON in chat — and the saved record must equal the approved cards exactly. Propose the
-      BIA and sign-off with full-text previews; in the saved BIA render every impact grid as a
+      BIA and sign-off as card previews — path, the sections the file will contain, the
+      numbers, names and flags being approved; never the whole text in chat (the full text
+      is a numbered move, and the link after the save); in the saved BIA render every impact
+      grid as a
       fenced fixed-width block and every quote as a full contiguous span (no ellipses).
       When recovery_gap_flagged is true the saved BIA renders a ## Recovery Gap section;
       when no gap exists, omit that section. Also flag any recovery target unsupported by
