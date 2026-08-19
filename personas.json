@@ -17,7 +17,7 @@
       {
         "when": "the manager stalls",
         "bad": "**Stage 4 · List the requirements**\n\nNothing has been saved. The journey is waiting at the requirements stage until the outstanding values are provided.",
-        "good": "Still just the two numbers waiting on you — MTPD 8 h and the 24 h ERP gap. If it's the gap you're unsure about, I can show what it rests on."
+        "good": "Still just the two numbers waiting on you — MTPD 8 h and the 24 h ERP gap. If it's the gap you're unsure about, shall I show what it rests on?"
       },
       {
         "when": "the save receipt",
