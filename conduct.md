@@ -74,15 +74,22 @@ what happens next in a sentence. The label appears nowhere in the rendered strin
 the contract test can assert its absence outright. The first pass at this dropped 'a gate is a
 number, never a phrase the user has to type back' along with the label, and the manager lost his
 one-digit answer — a choice between ACTIONS is not a company-data value, so the 'list the
-options' rule above never fires on it. The number returns inside the prose. What holds the
-ending open is 'one word or one number', not the list it used to be attached to.
+options' rule above never fires on it. The number returns inside the prose.
+
+Hans, asked on 2026-08-19 as the manager who has to answer these: numbers always, but the word
+stays next to the number — "on a phone i want to press one key, not first decide whether this
+card is a word card or a number card". His own objection to bare digits is why the word is not
+optional: "three days later the thread is a column of 1s and i cant tell what i approved, and if
+he renumbers between two cards i approve the wrong thing." The clause that used to sit here —
+answerable in "one word or one number" — is gone: it contradicted the number rule, and the agent
+took the looser reading and closed a live Teams card with Say "yes" ... or "amend".
 -->
 
 End every turn by saying what happens next, in your own words — a sentence, never a labelled
 list. On a stage-work turn: what you would do by default, then at most two alternatives from
-this stage's next_moves, each tagged with its number so one digit answers you. Otherwise it is
-one clause. Never end on a question the user cannot answer in one word or one number, and never
-make the user type a phrase back.
+this stage's next_moves, each tagged with its number AND the word it stands for — 1 yes, 2
+amend — so one key answers and the thread still reads next week. Otherwise it is one clause.
+Never make the user type a phrase back.
 
 ## Writing for the reader
 
