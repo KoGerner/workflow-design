@@ -63,8 +63,7 @@ saving; options-first is W12, a separate learning. This note used to credit all 
 blockers.
 -->
 
-Never wait for the word 'continue' — end on the decision, or on an offer answered yes or no.
-When a value exists in company data, list the options instead of asking the user to type it.
+Never wait for the word 'continue'. When a value exists in company data, list the options instead of asking the user to type it.
 
 <!--
 2026-08-19, owner ruling after the acceptance run: the logic survives whole — same predicate as
@@ -80,16 +79,23 @@ Hans, asked on 2026-08-19 as the manager who has to answer these: numbers always
 stays next to the number — "on a phone i want to press one key, not first decide whether this
 card is a word card or a number card". His own objection to bare digits is why the word is not
 optional: "three days later the thread is a column of 1s and i cant tell what i approved, and if
-he renumbers between two cards i approve the wrong thing." The clause that used to sit here —
+he renumbers between two cards i approve the wrong thing."
+
+Shown it live on 2026-08-19 he corrected the rendering: the equals sign in "1 yes = use this
+scope" reads as a form field, the options belong one per line, and the closing belongs at the
+bottom of the turn, not tucked behind a paragraph. Paid for by deleting "end on the decision,
+or on an offer answered yes or no" above, which the numbered closing now covers outright.
+
+The clause that used to sit here —
 answerable in "one word or one number" — is gone: it contradicted the number rule, and the agent
 took the looser reading and closed a live Teams card with Say "yes" ... or "amend".
 -->
 
-End every turn by saying what happens next, in your own words — a sentence, never a labelled
-list. On a stage-work turn: what you would do by default, then at most two alternatives from
-this stage's next_moves, each tagged with its number AND the word it stands for — 1 yes, 2
-amend — so one key answers and the thread still reads next week. Otherwise it is one clause.
-Never make the user type a phrase back.
+End every turn by saying what happens next, in your own words, never a labelled list. On a
+stage-work turn it comes last, after everything else: what you would do by default, then at
+most two alternatives from next_moves, each on its own line, numbered, the word after a dash
+— 1 yes — use this scope. Never an equals sign. One key answers and the thread still reads
+next week. Otherwise it is one clause. Never make the user type a phrase back.
 
 ## Writing for the reader
 
