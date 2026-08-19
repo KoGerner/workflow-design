@@ -109,6 +109,9 @@ stages:
         name: scope note and interview guide
         markers: ["## Scope", "## Risk and environment", "## Method parameters", "## Interview guide"]
         min_bytes: 1200
+    requires_reads:
+      - 02_BCM-Method/method.json
+      - 03_Dependencies/dependency-register.json
     next_moves:
       - {when: "no department chosen yet, or the user asks which process is most critical", offer: "Rank the recorded activities by criticality (priority tier, MTPD) — pick one to start"}
       - {when: "scope or participants not yet confirmed", offer: "Confirm the department/process and participants — I draft the scope note and interview guide"}
