@@ -70,11 +70,7 @@ stages:
       (each overwrite still needs the human's approval); a BIA never writes into another BIA's
       folder — output/ accumulates BIAs and is never wiped by a new run. Only the shared machine
       record output/bia-record.json stays at the top of output/ (it merges across BIAs).
-      Close your answer with a "Verify for yourself:" line of clickable links:
-      [Core principles for AI use in BCM](https://agent.ai4bcm.org/demo/kb/core-principles-for-ai-use-in-bcm/) ·
-      [BIA Preparation](https://agent.ai4bcm.org/demo/kb/workflows-bia-preparation/) ·
-      [BIA method parameters](https://agent.ai4bcm.org/demo/kb/workflows-bia-method-parameters/) ·
-      [interview-guide prompt pattern](https://agent.ai4bcm.org/demo/kb/prompts-bia-preparation-interview-guide/).
+      Source: [BIA Preparation](https://agent.ai4bcm.org/demo/kb/workflows-bia-preparation/).
     tools_to_use:
       - identify_ai_risks
       - get_prompt_template
@@ -158,9 +154,7 @@ stages:
       summary. A request to keep the saved file short applies only to additional
       files, not to the stage document; a short extra summary may be saved under a
       different filename after the stage document exists.
-      Close your answer with a "Verify for yourself:" line of clickable links:
-      [PP3 minimum controls](https://agent.ai4bcm.org/demo/kb/pp3-minimum_controls/) ·
-      [Do not use confidential BCM data in public AI tools](https://agent.ai4bcm.org/demo/kb/do-not-use-do-not-use-confidential-bcm-data-in-public-ai-tools/).
+      Source: [PP3 minimum controls](https://agent.ai4bcm.org/demo/kb/pp3-minimum_controls/).
     tools_to_use:
       - search
     connector_guidance: >
@@ -219,9 +213,7 @@ stages:
       it. Flag inconsistencies for human resolution — do NOT resolve them yourself.
       Refer single points of failure and risk items to the separate risk assessment
       — do NOT score or treat them in the BIA.
-      Close your answer with a "Verify for yourself:" line of clickable links:
-      [BIA Output Review — Consistency Check](https://agent.ai4bcm.org/demo/kb/prompts-bia-output-review-consistency-check/) ·
-      [PP3 process](https://agent.ai4bcm.org/demo/kb/pp3-process/).
+      Source: [BIA Output Review](https://agent.ai4bcm.org/demo/kb/prompts-bia-output-review-consistency-check/).
       STALL RULE: if any of this process's dependencies (the register assets this process
       depends on or consumes from) is flagged OWNER MISSING, the next stage is the owner
       side-quest — do not analyse around an unowned critical dependency. If every one of this
@@ -426,8 +418,7 @@ stages:
       When recovery_gap_flagged is true the saved BIA renders a ## Recovery Gap section;
       when no gap exists, omit that section. Also flag any recovery target unsupported by
       impact evidence and any dependency without an owner. Use only the approved material.
-      Close your answer with a "Verify for yourself:" line of clickable links:
-      [PP3 outcomes](https://agent.ai4bcm.org/demo/kb/pp3-outcomes/) · [PP3 minimum controls](https://agent.ai4bcm.org/demo/kb/pp3-minimum_controls/).
+      Source: [PP3 outcomes](https://agent.ai4bcm.org/demo/kb/pp3-outcomes/).
     tools_to_use:
       - get_prompt_template
       - search
@@ -504,9 +495,7 @@ stages:
         IT need, and the input the other departments' BIAs must see;
       and enumerate every register pp4_issue item so none is dropped.
       Label everything "requirements handover — for solution-design discussion (GPG PP4), not approved".
-      Close your answer with a "Verify for yourself:" line of clickable links:
-      [AI support for PP4: process](https://agent.ai4bcm.org/demo/kb/pp4-process/) ·
-      [AI support for PP4: typical uses](https://agent.ai4bcm.org/demo/kb/pp4-typical_uses/).
+      Source: [AI support for PP4: process](https://agent.ai4bcm.org/demo/kb/pp4-process/).
     tools_to_use:
       - search
       - get_prompt_template
