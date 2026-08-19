@@ -104,7 +104,7 @@ stages:
       One saved document holding the scope note, the risk/environment decision, the
       confirmed method parameters, and an interview guide per critical process; chat
       carries only the ten-line summary.
-    artifact_contracts:
+    document_contracts:
       - path: output/<bia>/stage1-scope-and-guide.md
         name: scope note and interview guide
         markers: ["## Scope", "## Risk and environment", "## Method parameters", "## Interview guide"]
@@ -173,7 +173,7 @@ stages:
       - Consent obtained and recorded.
       - Environment is approved for confidential BIA data.
     expected_output: Structured interview capture with explicit gaps.
-    artifact_contracts:
+    document_contracts:
       - path: output/<bia>/stage2-interview-capture.md
         name: interview capture
         markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Gaps"]
@@ -235,7 +235,7 @@ stages:
       - AI-surfaced dependencies confirmed, not assumed.
       - SPOFs and risk items referred to the separate risk assessment, not scored in the BIA.
     expected_output: A dependency/inconsistency report for owner resolution.
-    artifact_contracts:
+    document_contracts:
       - path: output/<bia>/stage3-dependency-analysis.md
         name: dependency analysis
         markers: ["## Shared dependencies", "## Single points of failure", "## Conflicting recovery targets", "## Referrals"]
@@ -304,7 +304,7 @@ stages:
     expected_output: A validated owner capture (proposal file), the human-approved register update, and a re-run analysis with the stall cleared.
     # Write-time contracts only — no advance gate for this stage: the N/A branch is
     # register-dependent and not server-derivable (patterns carry a '*').
-    artifact_contracts:
+    document_contracts:
       - path: output/owner-interviews/*.md
         name: owner interview transcript
         markers: []
@@ -453,7 +453,7 @@ stages:
       - Impact ratings are complete for every configured horizon and non-decreasing over time; RPO is chosen from the named vocabulary, not free-text.
       - The sign-off record names who approved, in what role, on which date, for which document version.
     expected_output: A reviewed, owner-approved BIA report.
-    artifact_contracts:
+    document_contracts:
       - path: output/bia-record.json
         name: machine BIA record
         markers: ['"activities"']
@@ -516,7 +516,7 @@ stages:
       - Risk-assessment referrals are listed; none is resolved or scored here.
       - No capability gap computed, no option chosen or recommended; risk acceptance stays with the sponsor.
     expected_output: A requirements / RA-referrals / missing-evidence handoff for the PP4 sponsor discussion.
-    artifact_contracts:
+    document_contracts:
       - path: output/<bia>/pp4-handoff.md
         name: PP4 requirements handoff
         markers: ["## Continuity requirements", "## Risk-assessment referrals", "## Missing evidence"]
