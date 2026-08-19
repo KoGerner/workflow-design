@@ -359,7 +359,8 @@ stages:
       so the department head can read it: "MTPD 8 h — the legal/regulatory impact reaches
       the threshold at 8 h", never a method label — and MBCO (minimum
       capacity or service over time); a compact fixed-width
-      impact grid in a fenced code block; the exact supporting quotes and source files;
+      impact grid in a fenced code block; each scored category's exact quote next to the score
+      it supports, with its source file — never as a separate list the reader has to match up;
       dependencies, minimum resources, and open decisions. State the workaround per resource
       where the interview gave one, and flag a workaround pool that is not larger than the
       need as a gap. A recovery target equal to or later than the MTPD, or an impact rating
@@ -413,9 +414,8 @@ stages:
       raw JSON in chat — and the saved record must equal the approved cards exactly. Propose the
       BIA and sign-off as card previews — path, the sections the file will contain, the
       numbers, names and flags being approved; never the whole text in chat (the full text
-      is a numbered move, and the link after the save); in the saved BIA render every impact
-      grid as a
-      fenced fixed-width block and every quote as a full contiguous span (no ellipses).
+      is a numbered move, and the link after the save); the saved BIA renders the same way, every
+      quote a full contiguous span (no ellipses).
       When recovery_gap_flagged is true the saved BIA renders a ## Recovery Gap section;
       when no gap exists, omit that section. Also flag any recovery target unsupported by
       impact evidence and any dependency without an owner. Use only the approved material.
@@ -467,7 +467,7 @@ stages:
         markers: ['"name"', '"role"', '"date"']
         min_bytes: 200
     next_moves:
-      - {when: "a card is on screen", offer: "Approve this card — or Amend (say which field), or show the evidence quotes"}
+      - {when: "a card is on screen", offer: "Approve this card — or Amend (say which field)"}
       - {when: "every card is approved", offer: "Save the record, the BIA draft and the sign-off — I show each preview first"}
       - {when: "the referee still fails after three rounds", offer: "Here are the exact rejections; I fix the mechanical ones myself"}
     cites:
