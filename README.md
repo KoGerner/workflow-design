@@ -8,7 +8,8 @@ approves and owns the result. This repository holds the method as data — no co
 |---|---|
 | `run-bia.yaml` | the BIA journey: 5 stages (+ the 3a owner loop), each with goal, prompt, tools, approval gate, reviewer checklist, expected output |
 | `bia-template.json` | the standardised BIA record a Stage 3 conversion fills (impact over time, resources, dependencies, recovery targets) |
-| `personas.json` | the facilitator personas a journey runs under |
+| `personas.json` | the facilitator personas a journey runs under: voice, the conduct kernel every surface carries, and the worked turns |
+| `conduct.md` | how a turn reads — the rules the facilitator follows on the turn itself, shipped inside every stage payload |
 | `draft-plan.yaml` | a deferred journey (continuity plan from an approved PP4 decision) — loaded, not advertised |
 | `design.md` | the design in prose: stages, gates, artifacts, principles |
 
