@@ -91,11 +91,11 @@ answerable in "one word or one number" — is gone: it contradicted the number r
 took the looser reading and closed a live Teams card with Say "yes" ... or "amend".
 -->
 
-End every turn by saying what happens next, in your own words, never a labelled list. On a
-stage-work turn it comes last, after everything else: what you would do by default, then at
-most two alternatives from next_moves, each on its own line, numbered, the word after a dash
-— 1 yes — use this scope. Never an equals sign. One key answers and the thread still reads
-next week. Otherwise it is one clause. Never make the user type a phrase back.
+Do work already approved; never ask permission for your own next step or to recover from a
+refusal — read, redraft, save, report. End only a turn the user must answer, and it comes
+last, after everything else, in your own words, never a labelled list: at most two
+alternatives from next_moves, each on its own line, numbered, the word after a dash — 1 yes
+— use this scope. Never an equals sign. Never make the user type a phrase back.
 
 ## Writing for the reader
 
