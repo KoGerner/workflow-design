@@ -1,6 +1,14 @@
 id: run-bia
 persona: bia-facilitator
 title: Run a BIA end-to-end
+# Server-side only — never rendered into the stage payload, so it costs zero characters. It is
+# the description identify_ai_risks classifies while this journey runs, phrased once here so
+# every run of every stage returns the SAME governance answer. Measured 2026-08-20: with the
+# model writing that string, one stage produced medium, high, and no level at all across three
+# runs, and the level goes into the header of the document a human signs.
+risk_task: >-
+  AI-assisted Business Impact Analysis: preparing the scope and interview guide, capturing and
+  analysing interview evidence, and drafting the BIA report for human review and approval.
 when_to_use: >
   Use when you need to run a Business Impact Analysis with AI help — from scoping
   and risk-check, through interview design and transcript analysis, to a reviewed
