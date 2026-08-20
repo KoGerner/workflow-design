@@ -370,8 +370,7 @@ stages:
       that falls over time, is flagged — never silently accepted. If the company keeps an IT
       register with the actual RTO/RPO per application, show IT's actual next to the required
       value as reference and flag a requirement stricter than the actual as a capability gap
-      for solution design — flag, never resolve or pick an option here. Skeleton staff or
-      seats above the department headcount are flagged too. End with one "Approve / Amend"
+      for solution design — flag, never resolve or pick an option here. End with one "Approve / Amend"
       gate and stop. Ask it as one line — the value, the flag, "ok?": "RTO < 4 h binding,
       and the 8 h ERP target is a gap. ok?" — the gate question is one line, the reasons
       are already on the card. Do not show raw JSON or Markdown pipe tables, and do not
