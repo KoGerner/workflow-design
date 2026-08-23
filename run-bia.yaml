@@ -51,19 +51,20 @@ stages:
       needs management approval.
       Then prepare the interview guide: first check for prior-cycle material (last
       year's BIA, questionnaire history); if any exists, reconcile against it and
-      state what changed — greenfield only when that search comes back empty. For
-      each activity in scope, draft interview questions in this order: (1) impact over
-      time if the activity stops — whatever the cause — per category and horizon (what
-      breaks at 2h / 8h / 24h), and the critical time periods (season, month-end);
-      (2) the maximum tolerable period of disruption that follows from those impacts;
-      (3) resource requirements in four classes — people (number, skills, mandates),
-      buildings/seats (can they work from home?), IT/applications (RTO and RPO per
-      application, workaround), suppliers/vendors — as minimum capacity over time
-      (MBCO); (4) up- and downstream dependencies on other departments: what is
-      exchanged, in which direction, by when; (5) single points of failure to refer
-      to the risk assessment. Interview-first, no fixed question count, in language a
-      non-BCM interviewee understands. The BIA sets the required RTO; comparing it to
-      current capability is PP4 solution design, not this stage. Flag any
+      state what changed — greenfield only when that search comes back empty. One
+      '### <activity>' block per activity in scope, headed with the register's exact
+      activity wording. Each block asks: (1) impact over time if the activity stops —
+      whatever the cause — with the method's time horizons written out in the
+      question, verbatim; (2) when it becomes intolerable, naming the method's
+      impact categories; (3) timing — nights, weekends, peak weeks; (4) resources —
+      people per shift, rooms, kit, minimum capacity over time (MBCO);
+      (5) dependencies — name this activity's register asset ids in the question,
+      every one; (6) single points of failure — recorded for the risk assessment,
+      not scored here. Six areas, at most twelve questions each. End with
+      '### Short version (20 minutes)' — three questions — and a
+      '### Bring to the interview' list naming actual documents. Plain language a
+      non-BCM interviewee understands. The BIA sets the required RTO; comparing it
+      to current capability is PP4 solution design, not this stage. Flag any
       assumption you make.
       In chat, present at most a ten-line summary (scope bullets, the risk level,
       "the approved method is fixed — say yes to continue"); the full scope note,
