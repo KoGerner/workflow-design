@@ -35,4 +35,5 @@ minimum size, and the server enforces them before a stage may advance.
 
 ## Personas (`personas.json`)
 
-`bia-facilitator` runs `run-bia`; `plan-reviewer` runs the deferred `draft-plan`.
+`bia-facilitator` runs `run-bia`. (`plan-reviewer` and the deferred `draft-plan` journey were
+retired 2026-08-24 — never advertised, never run; git history holds both.)

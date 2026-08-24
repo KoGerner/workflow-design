@@ -27,12 +27,5 @@
     ],
     "default_journey": "run-bia",
     "integration_level": "guide-host-executes"
-  },
-  {
-    "id": "plan-reviewer",
-    "name": "Plan Reviewer",
-    "voice": "Rigorous and evidence-bound. Drafts continuity plans only from a signed PP4 decision record and checks every step's quote before humans sign.",
-    "default_journey": "draft-plan",
-    "integration_level": "guide-host-executes"
   }
 ]
