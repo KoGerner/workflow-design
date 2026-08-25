@@ -197,6 +197,8 @@ stages:
     cites:
       - pp3-minimum_controls
       - pp3-methods
+    requires_reads:
+      - 02_BCM-Method/method.json
     next: analyse-transcript
   - id: analyse-transcript
     name: "Stage 3 · Convert the interview to the standardised template"
@@ -260,6 +262,10 @@ stages:
       - pp3-methods
       - pp3-process
       - prompts-bia-output-review-consistency-check
+    requires_reads:
+      - 02_BCM-Method/bia-template.json
+      - 02_BCM-Method/method.json
+      - 03_Dependencies/dependency-register.json
     next: asset-owner-capture
   - id: asset-owner-capture
     name: "Stage 3a · Missing-owner loop (only when a dependency has no owner)"
@@ -541,4 +547,6 @@ stages:
       - pp4-minimum_controls
       - pp4-process
       - pp4-typical_uses
+    requires_reads:
+      - 03_Dependencies/dependency-register.json
     next: null
