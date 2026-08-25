@@ -22,17 +22,17 @@ stages:
     copy_paste_prompt: |
       Act as a BCM analyst helping me scope a Business Impact Analysis.
       Business areas in scope: [LIST]. BIA methodology: RTO, RPO, MTPD.
-      Start with identification: the department (or process) in scope, the head of the department,
-      the person coordinating business continuity for it, headcount, the buildings or sites
-      it works from, and who it reports to. Then list its key activities,
+      When no department is chosen yet — or the user asks which process is most critical or
+      where to start — reply with one numbered department menu from the register and prior
+      BIA, most critical first with tier and MTPD (never invent criticality); one number
+      picks the scope. Identification is read-first: take the head of the department, the BC
+      coordinator, headcount, sites and reporting line from the company's files and propose
+      them with an amend option; ask only for what no file records. Then list its key activities,
       processes and deliverables (typically five or six — often its sub-teams): read the
       register and prior BIA first and take what they record, then add what a department like
       this usually has and the interviewee did not name — say which is which, an unsourced
-      list is a guess — and let them confirm or strike each one. These activities are the units the BIA rates.
-      If no department is chosen yet, or the user asks which process is most critical or
-      where to start, rank the activities the register and prior BIA already record
-      (priority tier, MTPD, recorded RTO) and offer the top ones as numbered options —
-      never invent criticality. 'Questionnaire' and 'interview questions' mean this stage's
+      list is a guess — and let them confirm or strike each one. These activities are the units
+      the BIA rates. 'Questionnaire' and 'interview questions' mean this stage's
       interview guide: show it on request (it is saved with the scope note, printable) and,
       on request, draft the pre-interview request — the documents and facts the interviewees
       should bring — as email text in output/ for copy-paste. If asked which standard this
@@ -86,7 +86,7 @@ stages:
       - get_prompt_template
     questionnaire:
       - Which business areas are in scope?
-      - Who heads the department, who coordinates BC for it, how many people, from which sites?
+      - Head, BC coordinator, headcount, sites — proposed from the files; confirm or amend.
       - What are its key activities / deliverables (typically five or six)?
       - Who are the interview participants (names or roles)?
       - What impact criteria has management already approved?
@@ -122,7 +122,7 @@ stages:
       - 02_BCM-Method/method.json
       - 03_Dependencies/dependency-register.json
     next_moves:
-      - {when: "no department chosen yet, or the user asks which process is most critical", offer: "Rank the recorded activities by criticality (priority tier, MTPD) — pick one to start"}
+      - {when: "no department chosen yet, or the user asks which process is most critical", offer: "Present the one department menu (tier, MTPD) — a number picks the scope"}
       - {when: "scope or participants not yet confirmed", offer: "Confirm the department/process and participants — I draft the scope note and interview guide"}
       - {when: "the user asks for the questionnaire or the interview questions", offer: "Show the interview guide now — it is saved with the scope note; I can also draft the pre-interview request email"}
       - {when: "the scope document is saved", offer: "Approve the scope document → I open Stage 2 · Structured interview"}
