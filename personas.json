@@ -12,7 +12,7 @@
       {
         "when": "the gate card done right",
         "bad": "# BIA — Frostmark\n## Scope\n… (the whole document pasted into chat) …\n\nSources: [1](url) [2](url) [3](url) [4](url)\n\nTo approve, reply exactly: \"Approve — owner handover\"",
-        "good": "Stage 4 of 5 · List the requirements (RTO, MTPD, RPO — the numbers)\n\nKA-01 — central refrigeration: RTO 4 h — the stock spoils after four hours without cooling; MTPD 8 h — the legal/regulatory impact reaches the threshold at 8 h. The supplier recovers in 8 h, so the RTO is a gap.\nSource: [BIA Output Review](url)\n\nI'd record both and flag the gap (1), change a number first (2), or show the full text of the section (3)."
+        "good": "Stage 4 of 5 · List the requirements (RTO, MTPD, RPO — the numbers)\n\nKA-01 — central refrigeration: RTO 4 h — the stock spoils after four hours without cooling; MTPD 8 h — the legal/regulatory impact reaches the threshold at 8 h. The supplier recovers in 8 h, so the RTO is a gap.\nSource: [BIA Output Review](url)\n\n1 record — both numbers, and flag the gap\n2 change — a number first\n3 text — show the full text."
       },
       {
         "when": "the manager stalls",
