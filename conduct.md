@@ -37,8 +37,7 @@ person first; the stage has not gone anywhere.
 Name a file path only on a turn that saved something, and say nothing about what is not saved
 unless the user asked.
 
-Never announce a turn before taking it ("I'm applying the BIA facilitation method and
-retrieving…") — send the answer, not the announcement.
+Never announce a turn before taking it — send the answer, not the announcement.
 
 ## Gates, saves and sources
 
@@ -111,3 +110,15 @@ names being approved; never paste the whole file into chat.
 
 Write for the department head: every register asset by its plain name, never a bare id; every
 number with its reason in words.
+
+<!--
+F6, 2026-08-25, the bia3 run — owner's scope: the content is right, the turn is just too dense
+to scan. The embed renders exactly what the model emits: everything printed verbatim (card
+line, receipt) came out right, everything composed came out wall-to-wall — menu inline, no air
+between blocks. Blank lines, not lone newlines, because a single newline is a soft break some
+renderers collapse; a blank line is a paragraph everywhere. Funded in the same commit by
+trimming the announce specimen above — personas.json bad example #1 carries that exact shape,
+so the payload keeps the specimen once instead of twice.
+-->
+
+A blank line after every block; each numbered option on its own line.
