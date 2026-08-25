@@ -188,7 +188,7 @@ stages:
     document_contracts:
       - path: output/<bia>/stage2-interview-capture.md
         name: interview capture
-        markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Gaps"]
+        markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Gaps", "People", "IT/applications", "Buildings/seats", "Suppliers"]
         min_bytes: 1200
     next_moves:
       - {when: "no interview yet", offer: "Interview me here, one activity at a time — or read the transcript at <path in the company folder>"}
