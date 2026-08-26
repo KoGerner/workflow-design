@@ -66,13 +66,12 @@ stages:
       non-BCM interviewee understands. The BIA sets the required RTO; comparing it
       to current capability is PP4 solution design, not this stage. Flag any
       assumption you make.
-      In chat, present at most a ten-line summary (scope bullets, the risk level,
+      In chat, present at most a ten-line summary (scope bullets,
       "the approved method is fixed — say yes to continue"); the full scope note,
       method parameters and interview guide live in the saved document, never in
       the chat.
-      Say how many impact categories the approved method has ("Seven impact categories —
-      I'll name them when we score" on the default matrix); name them when we score. Do
-      not count things you will not list.
+      Name the approved method's impact categories in that summary — the guide is reviewed
+      against them. Do not count things you will not list.
       Every document of THIS BIA lives in its own folder output/<bia>/, where <bia> is the
       process name as a lowercase-hyphen slug (output/slaughter/, output/cutting-deboning/,
       output/human-resources/): name the folder once in this stage's card and pass it as
@@ -101,8 +100,8 @@ stages:
       Scoping uses generic descriptions only.
     approval_gate: >
       Acknowledge to continue — not a formal gate: you confirm the one-process scope,
-      the AI risk level and approved tool environment, and that the fixed approved
-      method applies; adjust the interview guide only if it does not fit the scope.
+      the approved tool environment, and that the fixed approved method applies;
+      adjust the interview guide only if it does not fit the scope.
     reviewer_checklist:
       - Scope matches what management asked for.
       - The right environment is chosen for the data sensitivity ahead.
@@ -153,20 +152,20 @@ stages:
       you heard in one line before the next. Before you close the interview, name each impact
       category from the Stage 1 scope note and either capture it or record it as not asked — a
       category nobody was asked about is recorded as not asked, never left to look covered.
-      Save the verbatim Q&A to
-      output/owner-interviews/<department>-interview-transcript.md before writing the capture —
-      Stage 4 quotes only from transcript files (07_Interviews/ or output/owner-interviews/),
-      never from the capture. Then structure
+      Save the verbatim Q&A to output/owner-interviews/<department>-interview-transcript.md
+      after each activity block — Stage 4 quotes only from transcript files. Then structure
       the result as a BIA capture: impacts over time, resource requirements (people,
       buildings/seats, IT/applications, suppliers), dependencies on other departments,
       assumptions, unresolved points. Use ONLY what I said. Do not add facts from general
       knowledge as facts — a suggestion I did not confirm stays a question in Unresolved
       points. List gaps explicitly.
-      The stage document is the COMPLETE structured capture, saved to
-      output/<bia>/stage2-interview-capture.md with every required section — never a
-      summary. A request to keep the saved file short applies only to additional
-      files, not to the stage document; a short extra summary may be saved under a
-      different filename after the stage document exists.
+      Propose impact scores one whole activity per turn — the full category x horizon grid
+      in one fenced block, an Evidence line per category ending [interview], [record: <file>]
+      or [BCM judgement: <who>]; no evidence means Not assessed, never 0. I strike or amend
+      by category, never cell by cell.
+      The stage document is the COMPLETE structured capture at
+      output/<bia>/stage2-interview-capture.md — a request to keep it short applies only to
+      additional files, never to this one.
       Source: [PP3 minimum controls](https://agent.ai4bcm.org/demo/kb/pp3-minimum_controls/).
     tools_to_use:
       - search
@@ -188,7 +187,7 @@ stages:
     document_contracts:
       - path: output/<bia>/stage2-interview-capture.md
         name: interview capture
-        markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Gaps", "People", "IT/applications", "Buildings/seats", "Suppliers"]
+        markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Coverage", "## Gaps", "People", "IT/applications", "Buildings/seats", "Suppliers"]
         min_bytes: 1200
     next_moves:
       - {when: "no interview yet", offer: "Interview me here, one activity at a time — or read the transcript at <path in the company folder>"}
