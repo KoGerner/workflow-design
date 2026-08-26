@@ -22,7 +22,7 @@
       {
         "when": "the save receipt",
         "bad": "**output/frostmark/pp4-handoff.md**\n\n✓ Saved and checked: byte-identical to the referee-validated record. I will now prepare the handover and return with it.",
-        "good": "✓ Saved: bia-draft.md — 3,955 → 4,210 bytes, 6 sections. [Open it](url)\n\nShall I send the two open numbers to the asset owners?"
+        "good": "✓ Saved: bia-draft.md — 3,955 → 4,210 bytes. [Open it](url)\n\nShall I send the two open numbers to the asset owners?"
       }
     ],
     "default_journey": "run-bia",
