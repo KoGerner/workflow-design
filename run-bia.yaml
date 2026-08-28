@@ -344,6 +344,14 @@ stages:
     goal: Draft the BIA report, consistency-check it, route for human sign-off.
     # 2026-07-30: an activity saved with no dependencies rendered in the live graph as a
     # card with no edges (marschkamp Slaughter) — why the prompt calls the empty list out.
+    # The sentence that explained it went 2026-08-28: bia_referee's own rejection names the
+    # known register ids and the finding-vs-omit distinction, which is more than it said.
+    # stage4-worksheet.md is written per approved card, and BOTH halves of its heading shape
+    # are load-bearing. graph_files._overwrite_section_problem refuses a write only when the
+    # set of `## ` heading lines SHRINKS, so a per-card `## <activity name>` heading is what
+    # makes a silently dropped card refusable; and `### Impact grid` still satisfies the
+    # `## Impact grid` marker by substring containment (_stage_contract_error). Flat
+    # `## Impact grid` per card would clear every jaw with card 1 gone.
     copy_paste_prompt: |
       First build the provisional machine record in memory as a plain JSON object with an
       activities list; every activity must include its required recovery_target, a dept naming the
@@ -351,24 +359,22 @@ stages:
       schlachtung), and a dependencies list of exact register asset ids from the Stage-3 analysis
       — required, never empty, never an invented id. If Stage 3 surfaced a dependency the register does not
       model, raise it as a finding and list the register ids that ARE modelled; do not drop the
-      field. The referee rejects an activity with no dependencies: an unlinked activity renders as
-      a card with no edges. If none of the systems the interview named is modelled, offer the
+      field. If none of the systems the interview named is modelled, offer the
       register entries the department plausibly consumes (site power, water, shared IT) for the
       user to confirm, and record unmodelled systems as findings for the register owner — no
       confirmed link is a finding, never a stop. Record values come from the stage documents, the
       transcripts, the register — and the decisions the user already approved at this session's
       gates: a gate-approved value is an authorised source, never an invention. A field with
       neither is the string "MISSING" plus its reason — never null, and never a question the user
-      has already answered. Run validate_bia_record to PASS (maximum three rounds). Do not save or
-      expose the JSON. Fix schema, linkage, exact-quote, and encoding rejections yourself; they
-      are mechanical and need no human approval — the rejection text names the fix: apply it and
-      re-run without asking. Keep a failed provisional record in memory: never propose or write a
-      blocker, audit, or error file. Never offer to bypass the referee. If three rounds still fail
-      — or the same rejections return with nothing new — stop re-running: show the exact remaining
-      rejections as a technical blocker, not an Approve / Amend gate, and name per rejection who
-      unblocks it (you, the user, or the register owner). The first human decision is Approve /
-      Amend on the first PASSed activity card, presented in chat — cards are reviewed in chat
-      only, and no file is written until every card is approved. Only after PASS review one
+      has already answered. Run validate_bia_record to PASS (maximum three rounds). Fix schema,
+      linkage, exact-quote, and encoding rejections yourself; they are mechanical and need no human
+      approval — the rejection text names the fix: apply it and re-run without asking. Keep a failed
+      provisional record in memory: never propose or write a blocker, audit, or error file. Never
+      offer to bypass the referee. If three rounds still fail — or the same rejections return with
+      nothing new — stop re-running: show the exact remaining rejections as a technical blocker, not
+      an Approve / Amend gate, and name per rejection who unblocks it (you, the user, or the
+      register owner). The first human decision is Approve / Amend on the first PASSed activity
+      card, presented in chat — cards are reviewed in chat only. Only after PASS review one
       prioritised activity at a time, preserving the order in the approved capture. For the
       current activity show: owner and priority; RTO, RPO (per data set), the MTPD the impact grid
       gives — say it so the department head can read it: "MTPD 8 h — the legal/regulatory impact
@@ -376,20 +382,17 @@ stages:
       over time); a compact fixed-width impact grid in a fenced code block; each scored category's
       exact quote beside its score, with its source file — never a separate list; dependencies, minimum resources, and
       open decisions. State the workaround per resource where the interview gave one, and flag a
-      workaround pool that is not larger than the need as a gap. A recovery target equal to or
-      later than the MTPD, or an impact rating that falls over time, is flagged — never silently
-      accepted. If the company keeps an IT register with the actual RTO/RPO per application, show
-      IT's actual next to the required value as reference and flag a requirement stricter than the
-      actual as a capability gap for solution design — flag, never resolve or pick an option here.
-      End with one "Approve / Amend" gate and stop. Ask it as one line — the value, the flag,
-      "ok?": "RTO < 4 h binding, and the 8 h ERP target is a gap. ok?" — the gate question is one
-      line, the reasons are already on the card. Do not show raw JSON or Markdown pipe tables, and
-      do not show the next activity until this one is approved. Render each card's values directly
-      from the provisional record's fields — never re-type them; if a card is amended, amend the
-      record first and render the card from it. Propose scores by mapping transcript facts to the
-      approved severity criteria; label them analyst-proposed until the owner approves them, and
-      cite the evidence/criterion used. Evidence quotes must be exact contiguous transcript text
-      in evidence fields `quote` and `source_path`; no ellipses, brackets, or stitched fragments.
+      workaround pool that is not larger than the need as a gap. If the company keeps an IT register
+      with the actual RTO/RPO per application, show IT's actual next to the required value as
+      reference and flag a requirement stricter than the actual as a capability gap for solution
+      design — flag, never resolve or pick an option here. End with one "Approve / Amend" gate and
+      stop. Ask it as one line — the value, the flag, "ok?": "RTO < 4 h binding, and the 8 h ERP
+      target is a gap. ok?" — the gate question is one line, the reasons are already on the card. Do
+      not show raw JSON or Markdown pipe tables, and do not show the next activity until this one is
+      approved. Render each card's values directly from the provisional record's fields — never
+      re-type them; if a card is amended, amend the record first and render the card from it.
+      Propose scores by mapping transcript facts to the approved severity criteria; label them
+      analyst-proposed until the owner approves them, and cite the evidence/criterion used.
       Each evidence item also carries `lens` — the impact category it supports; a lens scored 2+
       with no lens-tagged quote is rejected. Take every quote by re-reading the transcript files
       directly — 07_Interviews/, or output/owner-interviews/ for an interview held in chat — the
@@ -404,21 +407,23 @@ stages:
       reuse the EXACT saved activity names served with this stage — the record keys activities by
       name, so a renamed re-run adds a second card for one process. A genuinely new activity gets
       a new name. If an owner amends a card, update the provisional record and re-run the referee
-      before showing that card again. After every activity is approved, save
-      output/bia-record.json and the BIA only after their write approval — canonical paths,
+      before showing that card again. Persist each approved card before showing the next: write
+      output/<bia>/stage4-worksheet.md carrying every card already in it plus this one, each under
+      its own `## <activity name>` heading with that card's sections as ### inside it. That card's
+      Approve is this write's approval — no second gate for it. After every activity is approved,
+      save output/bia-record.json and the BIA only after their write approval — canonical paths,
       exactly: the machine record to output/bia-record.json, the BIA draft to
-      output/<bia>/bia-draft.md, the sign-off record to output/<bia>/bia-signoff.json (never
-      invent other filenames). Save the machine record by passing the save_token from its passing
+      output/<bia>/bia-draft.md, the sign-off record to output/<bia>/bia-signoff.json (never invent
+      other filenames). Save the machine record by passing the save_token from its passing
       validate_bia_record call to write_company_file with content omitted — the server writes the
-      referee-validated bytes itself; never re-type the record. An amended card means referee
-      re-run, fresh save_token, fresh save. Propose the record write with a short readable summary
-      (path; per activity owner, MTPD, RTOs, RPO, referee status) — never raw JSON in chat — and
-      the saved record must equal the approved cards exactly. Propose the BIA and sign-off as card
-      previews — path, the sections the file will contain, the numbers, names and flags being
-      approved; never the whole text in chat; the saved BIA renders the same way, every quote a
-      full contiguous span. recovery_gap_flagged true renders a ## Recovery Gap section in the
-      saved BIA; no gap, no section. Also flag any recovery target unsupported by impact evidence
-      and any dependency without an owner. Use only the approved material. Source: [PP3
+      referee-validated bytes itself; never re-type the record. Propose the record write with a
+      short readable summary (path; per activity owner, MTPD, RTOs, RPO, referee status) — never raw
+      JSON in chat — and the saved record must equal the approved cards exactly. Propose the BIA and
+      sign-off as card previews — path, the sections the file will contain, the numbers, names and
+      flags being approved; never the whole text in chat; the saved BIA renders the same way, every
+      quote a full contiguous span. recovery_gap_flagged true renders a ## Recovery Gap section in
+      the saved BIA; no gap, no section. Also flag any recovery target unsupported by impact
+      evidence and any dependency without an owner. Use only the approved material. Source: [PP3
       outcomes](https://agent.ai4bcm.org/demo/kb/pp3-outcomes/).
     tools_to_use:
       - get_prompt_template
@@ -466,6 +471,10 @@ stages:
         name: sign-off record
         markers: ['"name"', '"role"', '"date"']
         min_bytes: 200
+      - path: output/<bia>/stage4-worksheet.md
+        name: activity worksheet
+        markers: ["## Impact grid", "## Recovery requirements", "## Dependencies", "## Decisions"]
+        min_bytes: 800
     next_moves:
       - {when: "a card is on screen", offer: "Approve this card — or Amend (say which field)"}
       - {when: "every card is approved", offer: "Save the record, the BIA draft and the sign-off — I show each preview first"}
