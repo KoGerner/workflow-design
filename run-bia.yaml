@@ -37,9 +37,7 @@ stages:
       on request, draft the pre-interview request — the documents and facts the interviewees
       should bring — as email text in output/ for copy-paste. If asked which standard this
       follows: the BCI Good Practice Guidelines (PP3 Analysis) as read through the BCI AI
-      Addendum — point to the Verify links.
-      List the inputs I need, the people to interview, and the data-sensitivity
-      decisions I must make before we start. Do not invent organisation facts.
+      Addendum — point to the Verify links. Do not invent organisation facts.
       Preconditions — program parameters, fixed before any data is collected, not
       interview work: the impact categories (typically financial, reputational,
       legal/regulatory, compliance/operational; a company may add life and health,
@@ -67,7 +65,7 @@ stages:
       to current capability is PP4 solution design, not this stage. Flag any
       assumption you make.
       In chat, present at most a ten-line summary (scope bullets,
-      "the approved method is fixed — say yes to continue"); the full scope note,
+      "the approved method is fixed — 1 continues"); the full scope note,
       method parameters and interview guide live in the saved document, never in
       the chat.
       Name the approved method's impact categories in that summary — the guide is reviewed
@@ -138,10 +136,12 @@ stages:
     name: "Stage 2 · Structured interview (conversational)"
     goal: Conduct or take in the structured interview — the AI asks, challenges, suggests and explains, conversationally, with consent, in the approved environment — and write the complete structured capture.
     copy_paste_prompt: |
-      Two ways in: either interview me here, one activity at a time, or take the transcript I
-      provide (file in the company folder, or pasted). Either way, conduct it as a structured
-      interview: ask what the impact is if the activity stops — whatever the cause; explain
-      that we rate urgency, not importance (a vital yearly process can tolerate two weeks);
+      Read first: capture from transcripts for this department already in the company folder —
+      propose the newest set as option 1 with its file names. Only if the folder holds none:
+      interview me here, one activity at a time, or take a pasted transcript. Either way,
+      conduct it as a structured interview: ask what the impact is if the activity stops —
+      whatever the cause; explain that we rate urgency, not importance (a vital yearly
+      process can tolerate two weeks);
       challenge estimates ("are you sure it is that bad — or overestimating?"); suggest
       activities, documents, systems or requirements a department like this usually needs
       and I did not mention, and let me confirm or strike them; explain any term you use
@@ -190,7 +190,8 @@ stages:
         markers: ["## Impacts", "## Dependencies", "## Assumptions", "## Unresolved points", "## Coverage", "## Gaps", "People", "IT/applications", "Buildings/seats", "Suppliers"]
         min_bytes: 1200
     next_moves:
-      - {when: "no interview yet", offer: "Interview me here, one activity at a time — or read the transcript at <path in the company folder>"}
+      - {when: "transcripts for this department are on file", offer: "Capture from the newest set — a number picks it"}
+      - {when: "the folder holds no transcript", offer: "Interview you here, one activity at a time"}
       - {when: "the interview is done, capture not yet saved", offer: "Save the transcript (if held here) and the structured capture, then approve → Stage 3"}
       - {when: "unresolved points remain", offer: "List the open points I should take back to the owner"}
     cites:
@@ -272,8 +273,11 @@ stages:
     copy_paste_prompt: |
       A dependency in the register has no owner (the OWNER MISSING flag). This is the reality
       loop: the BIA does not stop, and it does not get papered over — the BCM manager interviews
-      the candidate owner about what the resource can actually do (capacity, backup arrangements,
-      mobilisation runtime, on-call cover), and the validated answers update the shared register.
+      the candidate owner about what the resource can actually do (capacity, backup
+      arrangements, mobilisation runtime, on-call cover), and the validated answers update the
+      shared register. Read before you ask: when a transcript or register note names an owner,
+      propose that person as option 1 with the file as source — the interview confirms a
+      recorded name, never re-asks it.
       1. Interview the candidate owner; save the transcript to the company data source
          (output/owner-interviews/<asset-id>.md).
       2. Structure the capture as a PROPOSAL ONLY — the register is NOT touched: write
@@ -331,7 +335,7 @@ stages:
         markers: ["## Owner", "## Capability", "## Gaps"]
         min_bytes: 800
     next_moves:
-      - {when: "no owner interview yet", offer: "Give me the owner interview (file or paste) — I write the proposal"}
+      - {when: "no owner interview yet", offer: "I propose the owner named in the files, with its source — the interview confirms it"}
       - {when: "a proposal for this asset already exists", offer: "Overwrite it in place with the corrected proposal — version history keeps the earlier one"}
       - {when: "the proposal is reviewed", offer: "Sign off by name once → I save the proposal with your approval record and patch the register — no second gate"}
       - {when: "every dependency has an owner", offer: "Skip — mark Stage 3a N/A and continue"}
@@ -345,7 +349,12 @@ stages:
     # 2026-07-30: an activity saved with no dependencies rendered in the live graph as a
     # card with no edges (marschkamp Slaughter) — why the prompt calls the empty list out.
     # The sentence that explained it went 2026-08-28: bia_referee's own rejection names the
-    # known register ids and the finding-vs-omit distinction, which is more than it said.
+    # known register ids and the finding-vs-omit distinction, which is more than it said. Its
+    # twin ("If Stage 3 surfaced a dependency the register does not model, raise it as a finding
+    # and list the register ids that ARE modelled") went the same day for the same reason — the
+    # empty-list rejection prints "a dependency the register does not model is a finding to
+    # raise, not a field to omit" plus the known ids, and the next sentence still carries the
+    # finding-not-stop rule. It funds the gate-polarity additions in stages 2 and 3a.
     # stage4-worksheet.md is written per approved card, and BOTH halves of its heading shape
     # are load-bearing. graph_files._overwrite_section_problem refuses a write only when the
     # set of `## ` heading lines SHRINKS, so a per-card `## <activity name>` heading is what
@@ -357,12 +366,11 @@ stages:
       activities list; every activity must include its required recovery_target, a dept naming the
       department that performs it (the SAME dept value the register's consumers entries use, e.g.
       schlachtung), and a dependencies list of exact register asset ids from the Stage-3 analysis
-      — required, never empty, never an invented id. If Stage 3 surfaced a dependency the register does not
-      model, raise it as a finding and list the register ids that ARE modelled; do not drop the
-      field. If none of the systems the interview named is modelled, offer the
-      register entries the department plausibly consumes (site power, water, shared IT) for the
-      user to confirm, and record unmodelled systems as findings for the register owner — no
-      confirmed link is a finding, never a stop. Record values come from the stage documents, the
+      — required, never empty, never an invented id. If none of the systems the interview named is
+      modelled, offer the register entries the department plausibly consumes (site power, water,
+      shared IT) for the user to confirm, and record unmodelled systems as findings for the
+      register owner — no confirmed link is a finding, never a stop. Record values come from the
+      stage documents, the
       transcripts, the register — and the decisions the user already approved at this session's
       gates: a gate-approved value is an authorised source, never an invention. A field with
       neither is the string "MISSING" plus its reason — never null, and never a question the user
@@ -386,11 +394,14 @@ stages:
       with the actual RTO/RPO per application, show IT's actual next to the required value as
       reference and flag a requirement stricter than the actual as a capability gap for solution
       design — flag, never resolve or pick an option here. End with one "Approve / Amend" gate and
-      stop. Ask it as one line — the value, the flag, "ok?": "RTO < 4 h binding, and the 8 h ERP
-      target is a gap. ok?" — the gate question is one line, the reasons are already on the card. Do
-      not show raw JSON or Markdown pipe tables, and do not show the next activity until this one is
-      approved. Render each card's values directly from the provisional record's fields — never
-      re-type them; if a card is amended, amend the record first and render the card from it.
+      stop. One line, each move on its own line under it:
+      "RTO < 4 h binding, the 8 h ERP target is a gap.
+      1 record — the numbers and the gap
+      2 change — a number first"
+      — the gate question is one line, the reasons are already on the card. Do not show raw JSON
+      or Markdown pipe tables, and do not show the next activity until this one is approved.
+      Render each card's values directly from the provisional record's fields — never re-type
+      them; if a card is amended, amend the record first and render the card from it.
       Propose scores by mapping transcript facts to the approved severity criteria; label them
       analyst-proposed until the owner approves them, and cite the evidence/criterion used.
       Each evidence item also carries `lens` — the impact category it supports; a lens scored 2+
@@ -415,15 +426,14 @@ stages:
       exactly: the machine record to output/bia-record.json, the BIA draft to
       output/<bia>/bia-draft.md, the sign-off record to output/<bia>/bia-signoff.json (never invent
       other filenames). Save the machine record by passing the save_token from its passing
-      validate_bia_record call to write_company_file with content omitted — the server writes the
-      referee-validated bytes itself; never re-type the record. Propose the record write with a
-      short readable summary (path; per activity owner, MTPD, RTOs, RPO, referee status) — never raw
-      JSON in chat — and the saved record must equal the approved cards exactly. Propose the BIA and
-      sign-off as card previews — path, the sections the file will contain, the numbers, names and
-      flags being approved; never the whole text in chat; the saved BIA renders the same way, every
-      quote a full contiguous span. recovery_gap_flagged true renders a ## Recovery Gap section in
-      the saved BIA; no gap, no section. Also flag any recovery target unsupported by impact
-      evidence and any dependency without an owner. Use only the approved material. Source: [PP3
+      validate_bia_record call to write_company_file with content omitted;
+      never re-type the record. Propose the record write with a short readable summary (path; per
+      activity owner, MTPD, RTOs, RPO, referee status) — never raw JSON in chat — and the saved
+      record must equal the approved cards exactly. Propose the BIA and sign-off as card previews;
+      the saved BIA renders the same way, every quote a full contiguous span.
+      recovery_gap_flagged true renders a ## Recovery Gap section in the saved BIA;
+      no gap, no section. Also flag any recovery target unsupported by impact evidence and any
+      dependency without an owner. Use only the approved material. Source: [PP3
       outcomes](https://agent.ai4bcm.org/demo/kb/pp3-outcomes/).
     tools_to_use:
       - get_prompt_template
