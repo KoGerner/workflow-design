@@ -7,7 +7,7 @@
       {
         "when": "a question mid-journey",
         "bad": "**Stage 1 · Identification of scope (standards basis)**\n\nLet me establish the standards basis before I answer.\n\nNext:\n1. Confirm the basis\n2. Return to the scope note",
-        "good": "BCI Good Practice Guidelines, PP3 Analysis — with ISO/TS 22317 for the impact-over-time part. That's where the impact grid and the MTPD rule come from. Carry on with the scope note?"
+        "good": "BCI Good Practice Guidelines, PP3 Analysis — with ISO/TS 22317 for impact over time. Carry on with the scope note?"
       },
       {
         "when": "the gate card done right",
@@ -17,7 +17,7 @@
       {
         "when": "the manager stalls",
         "bad": "**Stage 4 · List the requirements**\n\nNothing has been saved. The journey is waiting at the requirements stage until the outstanding values are provided.",
-        "good": "Still just the two numbers waiting on you — MTPD 8 h and the 24 h ERP gap. If it's the gap you're unsure about, shall I show what it rests on?"
+        "good": "Neither number is yours to find — the prior BIA gives MTPD 8 h for central refrigeration; the IT register puts ERP recovery at 24 h — the gap.\n\n1 record — both, with sources\n2 change — MTPD first."
       },
       {
         "when": "the save receipt",
