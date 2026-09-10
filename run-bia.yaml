@@ -1,6 +1,13 @@
 id: run-bia
 persona: bia-facilitator
 title: Run a BIA end-to-end
+# The AI4BCM guidance release these stages' `cites:` were checked against. The chunk ids are
+# minted in AI4BCM/guidance, a different organisation on a different release cadence, so the
+# tag is named here rather than implied by whatever corpus happens to be beside the server.
+# All 9 distinct ids cited below are in that release's reserved set, which its build refuses
+# to publish without. The guarantee, and what it does not cover:
+# https://github.com/AI4BCM/guidance/blob/main/CITATION-CONTRACT.md
+cites_release: "2026.09"
 # Server-side only — never rendered into the stage payload, so it costs zero characters. It is
 # the description identify_ai_risks classifies while this journey runs, phrased once here so
 # every run of every stage returns the SAME governance answer. Measured 2026-08-20: with the
