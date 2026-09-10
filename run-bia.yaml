@@ -77,7 +77,7 @@ stages:
       (each overwrite still needs the human's approval); a BIA never writes into another BIA's
       folder — output/ accumulates BIAs and is never wiped by a new run. Only the shared machine
       record output/bia-record.json stays at the top of output/ (it merges across BIAs).
-      Source: [BIA Preparation](https://agent.ai4bcm.org/demo/kb/workflows-bia-preparation/).
+      Source: [Analysis: method](https://agent.ai4bcm.org/demo/kb/stages-analysis-method/).
     tools_to_use:
       - identify_ai_risks
       - get_prompt_template
@@ -126,11 +126,10 @@ stages:
       - {when: "prior-cycle BIA material was found", offer: "Show what changed against last cycle's BIA"}
       - {when: "no management-approved impact criteria exist", offer: "Use the default matrix for now and record that management approval is pending"}
     cites:
-      - pp3-typical_uses
-      - pp3-minimum_controls
-      - workflows-bia-method-parameters
-      - prompts-bia-preparation-interview-guide
-      - pp3-process
+      - stages-analysis-typical-ai-uses
+      - stages-analysis-minimum-controls
+      - prompts-bia
+      - stages-analysis-method
     next: capture-transcript
   - id: capture-transcript
     name: "Stage 2 · Structured interview (conversational)"
@@ -166,7 +165,7 @@ stages:
       The stage document is the COMPLETE structured capture at
       output/<bia>/stage2-interview-capture.md — a request to keep it short applies only to
       additional files, never to this one.
-      Source: [PP3 minimum controls](https://agent.ai4bcm.org/demo/kb/pp3-minimum_controls/).
+      Source: [Analysis: minimum controls](https://agent.ai4bcm.org/demo/kb/stages-analysis-minimum-controls/).
     tools_to_use:
       - search
     connector_guidance: >
@@ -195,8 +194,8 @@ stages:
       - {when: "the interview is done, capture not yet saved", offer: "Save the transcript (if held here) and the structured capture, then approve → Stage 3"}
       - {when: "unresolved points remain", offer: "List the open points I should take back to the owner"}
     cites:
-      - pp3-minimum_controls
-      - pp3-methods
+      - stages-analysis-minimum-controls
+      - stages-analysis-typical-ai-uses
     requires_reads:
       - 02_BCM-Method/method.json
     next: analyse-transcript
@@ -228,7 +227,7 @@ stages:
       it. Flag inconsistencies for human resolution — do NOT resolve them yourself.
       Refer single points of failure and risk items to the separate risk assessment
       — do NOT score or treat them in the BIA.
-      Source: [BIA Output Review](https://agent.ai4bcm.org/demo/kb/prompts-bia-output-review-consistency-check/).
+      Source: [Review and challenge](https://agent.ai4bcm.org/demo/kb/prompts-review/).
       STALL RULE: if any of this process's dependencies (the register assets this process
       depends on or consumes from) is flagged OWNER MISSING, the next stage is the owner
       side-quest — do not analyse around an unowned critical dependency. If every one of this
@@ -259,9 +258,9 @@ stages:
       - {when: "a dependency is flagged OWNER MISSING", offer: "Go to Stage 3a — interview the candidate owner of <asset id>"}
       - {when: "conflicting recovery targets were flagged", offer: "Show each conflicting target with who owns it"}
     cites:
-      - pp3-methods
-      - pp3-process
-      - prompts-bia-output-review-consistency-check
+      - stages-analysis-typical-ai-uses
+      - stages-analysis-method
+      - prompts-review
     requires_reads:
       - 02_BCM-Method/bia-template.json
       - 02_BCM-Method/method.json
@@ -340,8 +339,8 @@ stages:
       - {when: "the proposal is reviewed", offer: "Sign off by name once → I save the proposal with your approval record and patch the register — no second gate"}
       - {when: "every dependency has an owner", offer: "Skip — mark Stage 3a N/A and continue"}
     cites:
-      - pp3-methods
-      - pp3-process
+      - stages-analysis-typical-ai-uses
+      - stages-analysis-method
     next: draft-and-review
   - id: draft-and-review
     name: "Stage 4 · List the requirements (RTO, MTPD, RPO — the numbers)"
@@ -433,8 +432,8 @@ stages:
       the saved BIA renders the same way, every quote a full contiguous span.
       recovery_gap_flagged true renders a ## Recovery Gap section in the saved BIA;
       no gap, no section. Also flag any recovery target unsupported by impact evidence and any
-      dependency without an owner. Use only the approved material. Source: [PP3
-      outcomes](https://agent.ai4bcm.org/demo/kb/pp3-outcomes/).
+      dependency without an owner. Use only the approved material. Source: [Analysis: the
+      level this needs](https://agent.ai4bcm.org/demo/kb/stages-analysis-level/).
     tools_to_use:
       - get_prompt_template
       - search
@@ -491,8 +490,8 @@ stages:
       - {when: "no provisional record exists yet", offer: "I build it from the stage documents and your approved gate decisions, then referee it"}
       - {when: "the same rejections came back twice", offer: "I stop re-running and list the judgment calls only you can decide"}
     cites:
-      - pp3-minimum_controls
-      - pp3-outcomes
+      - stages-analysis-minimum-controls
+      - stages-analysis-level
     next: solution-design
   - id: solution-design
     name: "Stage 5 · Consolidate requirements + sanity check → handover"
@@ -516,7 +515,7 @@ stages:
         IT need, and the input the other departments' BIAs must see;
       and enumerate every register pp4_issue item so none is dropped.
       Label everything "requirements handover — for solution-design discussion (GPG PP4), not approved".
-      Source: [AI support for PP4: process](https://agent.ai4bcm.org/demo/kb/pp4-process/).
+      Source: [Solutions design: method](https://agent.ai4bcm.org/demo/kb/stages-design-method/).
     tools_to_use:
       - search
       - get_prompt_template
@@ -546,10 +545,9 @@ stages:
       - {when: "the sanity check raised findings", offer: "Show the sanity-check findings first"}
       - {when: "evidence is still missing", offer: "Add the missing-evidence list to the handover"}
     cites:
-      - pp4-methods
-      - pp4-minimum_controls
-      - pp4-process
-      - pp4-typical_uses
+      - stages-design-typical-ai-uses
+      - stages-design-minimum-controls
+      - stages-design-method
     requires_reads:
       - 03_Dependencies/dependency-register.json
     next: null
