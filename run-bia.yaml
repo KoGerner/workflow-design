@@ -7,7 +7,7 @@ title: Run a BIA end-to-end
 # All 9 distinct ids cited below are in that release's reserved set, which its build refuses
 # to publish without. The guarantee, and what it does not cover:
 # https://github.com/AI4BCM/guidance/blob/main/CITATION-CONTRACT.md
-cites_release: "2026.09"
+cites_release: "2026.09.1"
 # Server-side only — never rendered into the stage payload, so it costs zero characters. It is
 # the description identify_ai_risks classifies while this journey runs, phrased once here so
 # every run of every stage returns the SAME governance answer. Measured 2026-08-20: with the
