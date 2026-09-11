@@ -15,7 +15,7 @@ approves and owns the result. This repository holds the method as data — no co
 
 Used as the `design/` git submodule of the private `bia-workflow` server repository; the
 server loads the journeys from here at startup. Method aligned with the BCI Good Practice
-Guidelines (PP3 Analysis) as read through the BCI AI Addendum.
+Guidelines (PP3 Analysis) as read through the AI4BCM guidance.
 
 ## Licence and attribution
 
