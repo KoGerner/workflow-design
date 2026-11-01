@@ -84,7 +84,7 @@ stages:
       (each overwrite still needs the human's approval); a BIA never writes into another BIA's
       folder — output/ accumulates BIAs and is never wiped by a new run. Only the shared machine
       record output/bia-record.json stays at the top of output/ (it merges across BIAs).
-      Source: [Analysis: method](https://agent.ai4bcm.org/demo/kb/stages-analysis-method/).
+      Source: [Analysis: method](https://github.com/AI4BCM/guidance/blob/2026.11.1/units/stages/analysis.md#method).
     tools_to_use:
       - identify_ai_risks
       - get_prompt_template
@@ -172,7 +172,7 @@ stages:
       The stage document is the COMPLETE structured capture at
       output/<bia>/stage2-interview-capture.md — a request to keep it short applies only to
       additional files, never to this one.
-      Source: [Analysis: minimum controls](https://agent.ai4bcm.org/demo/kb/stages-analysis-minimum-controls/).
+      Source: [Analysis: minimum controls](https://github.com/AI4BCM/guidance/blob/2026.11.1/units/stages/analysis.md#minimum-controls).
     tools_to_use:
       - search
     connector_guidance: >
@@ -234,7 +234,7 @@ stages:
       it. Flag inconsistencies for human resolution — do NOT resolve them yourself.
       Refer single points of failure and risk items to the separate risk assessment
       — do NOT score or treat them in the BIA.
-      Source: [Review and challenge](https://agent.ai4bcm.org/demo/kb/prompts-review/).
+      Source: [Review and challenge](https://github.com/AI4BCM/guidance/blob/2026.11.1/units/prompts/review.md#review-and-challenge).
       STALL RULE: if any of this process's dependencies (the register assets this process
       depends on or consumes from) is flagged OWNER MISSING, the next stage is the owner
       side-quest — do not analyse around an unowned critical dependency. If every one of this
@@ -440,7 +440,7 @@ stages:
       recovery_gap_flagged true renders a ## Recovery Gap section in the saved BIA;
       no gap, no section. Also flag any recovery target unsupported by impact evidence and any
       dependency without an owner. Use only the approved material. Source: [Analysis: the
-      level this needs](https://agent.ai4bcm.org/demo/kb/stages-analysis-level/).
+      level this needs](https://github.com/AI4BCM/guidance/blob/2026.11.1/units/stages/analysis.md#level).
     tools_to_use:
       - get_prompt_template
       - search
@@ -522,7 +522,7 @@ stages:
         IT need, and the input the other departments' BIAs must see;
       and enumerate every register pp4_issue item so none is dropped.
       Label everything "requirements handover — for solution-design discussion (GPG PP4), not approved".
-      Source: [Solutions design: method](https://agent.ai4bcm.org/demo/kb/stages-design-method/).
+      Source: [Solutions design: method](https://github.com/AI4BCM/guidance/blob/2026.11.1/units/stages/design.md#method).
     tools_to_use:
       - search
       - get_prompt_template
