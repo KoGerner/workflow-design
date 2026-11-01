@@ -7,7 +7,7 @@ title: Run a BIA end-to-end
 # All 9 distinct ids cited below are in that release's reserved set, which its build refuses
 # to publish without. The guarantee, and what it does not cover:
 # https://github.com/AI4BCM/guidance/blob/main/CITATION-CONTRACT.md
-cites_release: "2026.09.1"
+cites_release: "2026.11.1"
 # Server-side only — never rendered into the stage payload, so it costs zero characters. It is
 # the description identify_ai_risks classifies while this journey runs, phrased once here so
 # every run of every stage returns the SAME governance answer. Measured 2026-08-20: with the
@@ -133,7 +133,7 @@ stages:
       - {when: "prior-cycle BIA material was found", offer: "Show what changed against last cycle's BIA"}
       - {when: "no management-approved impact criteria exist", offer: "Use the default matrix for now and record that management approval is pending"}
     cites:
-      - stages-analysis-typical-ai-uses
+      - stages-analysis-where-does-ai-help-and-where-are-its-limits
       - stages-analysis-minimum-controls
       - prompts-bia
       - stages-analysis-method
@@ -202,7 +202,7 @@ stages:
       - {when: "unresolved points remain", offer: "List the open points I should take back to the owner"}
     cites:
       - stages-analysis-minimum-controls
-      - stages-analysis-typical-ai-uses
+      - stages-analysis-where-does-ai-help-and-where-are-its-limits
     requires_reads:
       - 02_BCM-Method/method.json
     next: analyse-transcript
@@ -265,7 +265,7 @@ stages:
       - {when: "a dependency is flagged OWNER MISSING", offer: "Go to Stage 3a — interview the candidate owner of <asset id>"}
       - {when: "conflicting recovery targets were flagged", offer: "Show each conflicting target with who owns it"}
     cites:
-      - stages-analysis-typical-ai-uses
+      - stages-analysis-where-does-ai-help-and-where-are-its-limits
       - stages-analysis-method
       - prompts-review
     requires_reads:
@@ -346,7 +346,7 @@ stages:
       - {when: "the proposal is reviewed", offer: "Sign off by name once → I save the proposal with your approval record and patch the register — no second gate"}
       - {when: "every dependency has an owner", offer: "Skip — mark Stage 3a N/A and continue"}
     cites:
-      - stages-analysis-typical-ai-uses
+      - stages-analysis-where-does-ai-help-and-where-are-its-limits
       - stages-analysis-method
     next: draft-and-review
   - id: draft-and-review
@@ -552,7 +552,7 @@ stages:
       - {when: "the sanity check raised findings", offer: "Show the sanity-check findings first"}
       - {when: "evidence is still missing", offer: "Add the missing-evidence list to the handover"}
     cites:
-      - stages-design-typical-ai-uses
+      - stages-design-where-does-ai-help-and-where-are-its-limits
       - stages-design-minimum-controls
       - stages-design-method
     requires_reads:
